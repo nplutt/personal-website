@@ -11,12 +11,34 @@
   width: 100%;
   z-index: 10;
   box-sizing: border-box;
-  background-color: #1BBBFB;
-  padding: 0 40px 0 0;
+  background-color: #72B944;
+  padding: 8px 40px 8px 0;
   display: flex;
   flex-direction: row;
 }
 
+#header-menu {
+  min-width: 0;
+  margin: 0 12px 0 12px;
+  color: white
+}
+
+.header-name {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .header-spacer {
   flex-grow: 1;
+}
+
+.header-button {
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
 }

@@ -1,4 +1,4 @@
-import { MdButtonModule } from '@angular/material'
+import { MdButtonModule, MdIconModule } from '@angular/material'
 import { NgModule } from '@angular/core';
 
 import { HeaderComponent } from './header.component';
@@ -8,7 +8,8 @@ import { HeaderComponent } from './header.component';
     HeaderComponent
   ],
   imports: [
-    MdButtonModule
+    MdButtonModule,
+    MdIconModule
   ],
   exports: [
     HeaderComponent
