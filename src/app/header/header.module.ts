@@ -1,18 +1,22 @@
-import { MdButtonModule, MdIconModule } from '@angular/material'
+import { MdButtonModule, MdIconModule, MdSidenavModule } from '@angular/material'
 import { NgModule } from '@angular/core';
 
 import { HeaderComponent } from './header.component';
+import { SideNavComponent } from '../side-nav/side-nav.component'
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    SideNavComponent
   ],
   imports: [
     MdButtonModule,
-    MdIconModule
+    MdIconModule,
+    MdSidenavModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    SideNavComponent
   ]
 })
 
