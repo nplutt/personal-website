@@ -1,4 +1,4 @@
-import { MdButtonModule, MdIconModule, MdSidenavModule } from '@angular/material'
+import { MdButtonModule, MdIconModule, MdListModule, MdSidenavModule } from '@angular/material'
 import { NgModule } from '@angular/core';
 
 import { HeaderComponent } from './header.component';
@@ -12,6 +12,7 @@ import { SideNavComponent } from '../side-nav/side-nav.component'
   imports: [
     MdButtonModule,
     MdIconModule,
+    MdListModule,
     MdSidenavModule
   ],
   exports: [

@@ -1,0 +1,27 @@
+.body {
+  width: 300px;
+  height: 100%;
+  background-color: #F5F5F6;
+}
+
+#header {
+  height: 64px;
+  width: 100%;
+  background-color: #0039cb;
+  display: flex;
+  flex-direction: row;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: row;
+  height: 64px;
+}
+
+button {
+  width: 100%;
+  padding: 0;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 700;
+}
