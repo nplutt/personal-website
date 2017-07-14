@@ -10,6 +10,12 @@
   background-color: #0039cb;
   display: flex;
   flex-direction: row;
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  align-items: center;
+  justify-content: center;
 }
 
 .list-item {
