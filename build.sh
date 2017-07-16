@@ -1,11 +1,9 @@
 #!/bin/bash
 
-set -e
-
 # Create vitrualenv with node
 pip install virtualenv
-virtualenv node
-. node/bin/activate
+virtualenv nodes
+. nodes/bin/activate
 pip install nodeenv
 nodeenv -p
 
