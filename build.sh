@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Create vitrualenv with node
-virtualenv node
-. node/bin/activate
-pip install nodeenv
-nodeenv -p
+#virtualenv node
+#. node/bin/activate
+#pip install nodeenv
+#nodeenv -p
 
 # Build the UI
 npm install
