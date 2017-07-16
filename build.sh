@@ -17,3 +17,5 @@ npm install
 ng build --target=production --environment=prod
 
 # Deploy the UI to the web S3 bucket
+pip install awscli
+aws s3 cp dist s3://nplutt.apartments.ui/ --recursive
