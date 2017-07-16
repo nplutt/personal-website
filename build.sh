@@ -3,9 +3,11 @@
 set -e
 
 # Create vitrualenv with node
-pip install virtualenv 
+pip install virtualenv
+ls
 virtualenv node
-. node/bin/activate
+ls
+. /node/bin/activate
 pip install nodeenv
 nodeenv -p
 
