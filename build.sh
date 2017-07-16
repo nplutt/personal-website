@@ -3,6 +3,7 @@
 set -e
 
 # Create vitrualenv with node
+cd ..
 pip install virtualenv
 virtualenv node
 . node/bin/activate
@@ -10,8 +11,8 @@ pip install nodeenv
 nodeenv -p
 
 # Build the UI
-ls
-npm install
+# npm install
+npm install @angular/cli
 npm link @angular/cli
 ng new mucking
 cd mucking
