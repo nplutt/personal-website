@@ -15,6 +15,6 @@ export class HeaderComponent {
   }
 
   showButtons(): boolean {
-    return this.width > 350;
+    return this.width > 580;
   }
 }
