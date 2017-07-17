@@ -8,7 +8,7 @@
     </button>
     <div class="header-title">Magna Living</div>
     <div class="header-spacer"></div>
-    <button md-button class="header-button">Sign Up</button>
-    <button md-button class="header-button">Sign In</button>
+    <button *ngIf="showButtons()" md-button class="header-button">Sign Up</button>
+    <button *ngIf="showButtons()" md-button class="header-button">Sign In</button>
   </div>
 </md-sidenav-container>

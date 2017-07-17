@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,4 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 
-export class HeaderComponent { }
+export class HeaderComponent {
+
+  public width: number;
+
+  constructor() {
+    this.width = window.screen.width;
+  }
+
+  showButtons(): boolean {
+    return this.width > 350;
+  }
+}
