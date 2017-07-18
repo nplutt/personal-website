@@ -14,7 +14,7 @@ npm install @angular/cli
 npm link @angular/cli
 rm package-lock.json
 npm install
-ng test --single-run
+npm run test:xvfb
 ng build --target=production --environment=prod --deploy-url=https://s3-us-west-2.amazonaws.com/nplutt.apartments.ui/
 
 # Deploy the UI to the web S3 bucket

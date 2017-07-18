@@ -28,6 +28,16 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: false,
+    customLaunchers: {
+      Headless_Chrome: {
+        base: 'Chrome',
+        flags: [
+          '--no-sandbox',
+          'disable-gpu'
+        ]
+      }
+    }
+
   });
 };

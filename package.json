@@ -7,6 +7,8 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "test:ci": "ng test --browser=Headless_Chrome --code-coverage=true --single-run=true",
+    "test:xvfb": "xvfb-run npm run test:ci",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
