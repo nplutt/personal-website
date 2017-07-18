@@ -13,6 +13,8 @@ npm install @angular/cli
 npm link @angular/cli
 rm package-lock.json
 npm install
+npm uninstall zone.js
+npm install zone.js@0.8.12
 npm run test:xvfb
 ng build --target=production --environment=prod --deploy-url=https://s3-us-west-2.amazonaws.com/nplutt.apartments.ui/
 
