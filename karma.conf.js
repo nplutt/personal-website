@@ -34,7 +34,7 @@ module.exports = function (config) {
         base: 'Chrome',
         flags: [
           '--no-sandbox',
-          'disable-gpu'
+          '--disable-gpu'
         ]
       }
     }
