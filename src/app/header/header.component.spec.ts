@@ -1,7 +1,13 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 import { SideNavComponent } from '../side-nav/side-nav.component';
+import { RoutesService } from '../services/routes.service';
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+
+export class RoutesServiceStub {
+  goToSignIn(): void { }
+  goToSignUp(): void { }
+}
 
 describe('HeaderComponent', () => {
   let comp: HeaderComponent;
@@ -11,7 +17,10 @@ describe('HeaderComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         HeaderComponent,
-        SideNavComponent
+        SideNavComponent,
+      ],
+      providers: [
+        { provide: RoutesService, useClass: RoutesServiceStub}
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })

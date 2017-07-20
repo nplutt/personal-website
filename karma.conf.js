@@ -27,8 +27,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome',
-               '/custom-browser.sh'],
+    browsers: ['Chrome'],
     singleRun: false,
     customLaunchers: {
       Headless_Chrome: {
