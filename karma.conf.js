@@ -27,14 +27,16 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome',
+               '/custom-browser.sh'],
     singleRun: false,
     customLaunchers: {
       Headless_Chrome: {
         base: 'Chrome',
         flags: [
           '--no-sandbox',
-          '--disable-gpu'
+          '--disable-gpu',
+          '--remote-debugging-port=9876'
         ]
       }
     }
