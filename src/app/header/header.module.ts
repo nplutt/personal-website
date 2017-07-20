@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'
 
 import { HeaderComponent } from './header.component';
-import { SideNavComponent } from '../side-nav/side-nav.component'
+import { SideNavComponent } from '../side-nav/side-nav.component';
+
+import { RoutesService } from '../services/routes.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,9 @@ import { SideNavComponent } from '../side-nav/side-nav.component'
   exports: [
     HeaderComponent,
     SideNavComponent
+  ],
+  providers: [
+    RoutesService
   ]
 })
 
