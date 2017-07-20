@@ -2,18 +2,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HeaderModule } from './header/header.module'
+import { AppRoutingModule } from './app-routing.module';
+import { HeaderModule } from './header/header.module';
+import { LoginModule } from './login/login.module';
 
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './page-not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    HeaderModule
+    HeaderModule,
+    LoginModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
