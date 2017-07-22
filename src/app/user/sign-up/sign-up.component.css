@@ -1,0 +1,22 @@
+.body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #2962FF;
+}
+
+md-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 400px;
+  transform: translate(-50%, -50%);
+}
+
+input {
+  width: 250px;
+
+}
