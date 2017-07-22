@@ -1,4 +1,4 @@
-import { TestBed, inject, async } from '@angular/core/testing';
+import {TestBed, inject, async, getTestBed} from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RoutesService } from './routes.service';
 
@@ -7,28 +7,33 @@ export class RouterStub {
 }
 
 describe('RoutesService', () => {
-  let service: RoutesService;
-  let router: Router;
+  let router, service;
 
-  beforeEach(async(()=> {
+  beforeEach(()=> {
     TestBed.configureTestingModule({
       providers: [
         RoutesService,
-        { provide: Router, useFactory: RouterStub }
+        { provide: Router, useClass: RouterStub }
       ]
-    }).compileComponents();
-  }));
+    });
+    let injector = getTestBed();
+    router = injector.get(Router);
+    service = injector.get(RoutesService);
+  });
 
   describe('goToSignIn', () => {
-    // it('Should call navigate with /sign-in', inject([Router], (router) => {
-    //   spyOn(router, 'navigate');
-    //   service.goToSignIn();
-    //   expect(router.navigate).toHaveBeenCalledWith(['/sign-in']);
-    // }));
     it('Should call navigate with /sign-in', () => {
         spyOn(router, 'navigate');
         service.goToSignIn();
         expect(router.navigate).toHaveBeenCalledWith(['/sign-in'])
+    });
+  });
+
+  describe('goToSignUp', () => {
+    it('Should call navigate with /sign-up', () => {
+      spyOn(router, 'navigate');
+      service.goToSignUp();
+      expect(router.navigate).toHaveBeenCalledWith(['/sign-up'])
     });
   });
 });
