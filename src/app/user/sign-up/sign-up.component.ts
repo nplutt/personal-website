@@ -31,6 +31,10 @@ export class SignUpComponent {
     Validators.pattern(PASSWORD_REGEX)
   ]);
 
+  passwordsMatch(): boolean {
+    return this.userService.signUpModel.password === this.userService.signUpModel.confirmPassword;
+  }
+
   signUp(): void {
     this.cognitoService.signUp(this.userService.signUpModel);
   }

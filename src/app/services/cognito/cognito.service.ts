@@ -51,6 +51,7 @@ export class CognitoService {
       } else {
         this.routesService.goToConfirmation(user.email);
         this.userService.signUpModel.password = null;
+        this.userService.signUpModel.confirmPassword = null;
       }
     });
   }

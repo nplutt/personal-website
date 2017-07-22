@@ -11,9 +11,17 @@
   position: fixed;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sign-up-card {
   width: 250px;
   height: 300px;
-  transform: translate(-50%, -50%);
+}
+
+.confirm-card {
+  width: 250px;
+  height: 200px;
 }
 
 .input {
@@ -24,5 +32,12 @@
   background-color: #0039CB;
   color: white;
   width: 250px;
+}
+
+.sign-up-button {
   margin-top: 80px;
+}
+
+.confirm-button {
+  margin-top: 60px;
 }
