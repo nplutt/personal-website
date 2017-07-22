@@ -1,6 +1,5 @@
 import {TestBed, ComponentFixture, getTestBed} from '@angular/core/testing';
-import { HeaderComponent } from './header.component';
-import { SideNavComponent } from '../side-nav/side-nav.component';
+import { SideNavComponent } from './side-nav.component';
 import { RoutesService } from '../services/routes.service';
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 
@@ -9,16 +8,15 @@ export class RoutesServiceStub {
   goToSignUp(): void { }
 }
 
-describe('HeaderComponent', () => {
+describe('SideNavComponent', () => {
   let routesService;
-  let comp: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+  let comp: SideNavComponent;
+  let fixture: ComponentFixture<SideNavComponent>;
 
   beforeEach(()=> {
     TestBed.configureTestingModule({
       declarations: [
-        HeaderComponent,
-        SideNavComponent,
+        SideNavComponent
       ],
       providers: [
         { provide: RoutesService, useClass: RoutesServiceStub}
@@ -31,20 +29,8 @@ describe('HeaderComponent', () => {
   });
 
   beforeEach(()=> {
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(SideNavComponent);
     comp = fixture.componentInstance;
-  });
-
-  describe('showButtons', () => {
-    it('Should return true if width is > 580', () => {
-      comp.width = 600;
-      expect(comp.showButtons()).toBeTruthy();
-    });
-
-    it('Should return false if width is < 580', () => {
-      comp.width = 580;
-      expect(comp.showButtons()).toBeFalsy();
-    });
   });
 
   describe('goToSignUp', () => {

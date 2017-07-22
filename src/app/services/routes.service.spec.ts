@@ -1,4 +1,4 @@
-import {TestBed, inject, async, getTestBed} from '@angular/core/testing';
+import {TestBed, getTestBed} from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RoutesService } from './routes.service';
 
