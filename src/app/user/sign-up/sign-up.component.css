@@ -7,16 +7,22 @@
   background-color: #2962FF;
 }
 
-md-card {
+.card {
   position: fixed;
   top: 50%;
   left: 50%;
   width: 250px;
-  height: 400px;
+  height: 300px;
   transform: translate(-50%, -50%);
 }
 
-input {
+.input {
   width: 250px;
+}
 
+.sign-up-button {
+  background-color: #0039CB;
+  color: white;
+  width: 250px;
+  margin-top: 80px;
 }
