@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators} from '@angular/forms';
-import { SignUpModel } from '../../models/sign-up.model';
+import { Router } from '@angular/router';
 import { CognitoService } from '../../services/cognito/cognito.service';
+import { UserService } from '../../services/user/user.service';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
@@ -15,10 +16,10 @@ const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d
 export class SignUpComponent {
 
   constructor(
-    private cognitoService: CognitoService
+    private cognitoService: CognitoService,
+    private router: Router,
+    public userService: UserService
   ) { }
-
-  public model = new SignUpModel('', '');
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -31,6 +32,15 @@ export class SignUpComponent {
   ]);
 
   signUp(): void {
-    this.cognitoService.signUp(this.model);
+    this.cognitoService.signUp(this.userService.signUpModel);
   }
+
+  confirm(): void {
+    this.cognitoService.confirmRegistration(this.userService.signUpModel);
+  }
+
+  routeAtSignUp(): boolean {
+    return this.router.url === '/sign-up';
+  }
+
 }

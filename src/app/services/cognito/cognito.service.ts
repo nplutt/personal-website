@@ -4,7 +4,11 @@ import { CognitoUser, CognitoUserPool } from "amazon-cognito-identity-js";
 import * as AWS from "aws-sdk/global";
 import * as CognitoIdentity from "aws-sdk/clients/cognitoidentity";
 
+import { Router } from '@angular/router';
+
+import { RoutesService } from '../routes/routes.service';
 import { SignUpModel } from '../../models/sign-up.model'
+import { UserService } from '../user/user.service';
 
 
 @Injectable()
@@ -20,6 +24,12 @@ export class CognitoService {
   };
 
   public cognitoCreds = AWS.CognitoIdentityCredentials;
+
+  constructor(
+    private router: Router,
+    private routesService: RoutesService,
+    private userService: UserService
+  ) { }
 
 
   getUserPool() {
@@ -39,24 +49,30 @@ export class CognitoService {
       if (err) {
         console.log(err.message);
       } else {
-        console.log(result);
+        this.routesService.goToConfirmation(user.email);
+        this.userService.signUpModel.password = null;
       }
     });
   }
 
-  confirmRegistration(email: string, confirmationCode: string): void {
+  confirmRegistration(user: SignUpModel): void {
+    if (!user.email) {
+      user.email = this.router.parseUrl(this.router.url).queryParams['email'];
+    }
+
     let userData = {
-      UserName: email,
+      Username: user.email,
       Pool: this.getUserPool()
     };
 
     let cognitoUser = new CognitoUser(userData);
 
-    cognitoUser.confirmRegistration(confirmationCode, true, (err, result) => {
+    cognitoUser.confirmRegistration(user.confirmationNumber, true, (err, result) => {
       if (err) {
         console.log(err.message);
       } else {
         console.log(result);
+        this.routesService.goToSignIn();
       }
     });
   }

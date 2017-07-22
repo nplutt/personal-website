@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Injectable()
 export class RoutesService {
@@ -13,5 +13,13 @@ export class RoutesService {
 
   goToSignUp(): void {
     this.router.navigate(['/sign-up']);
+  }
+
+  goToConfirmation(email: string): void {
+    const params: NavigationExtras = {
+      queryParams: { 'email': email }
+    };
+
+    this.router.navigate(['/confirmation'], params);
   }
 }
