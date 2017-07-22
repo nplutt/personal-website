@@ -1,7 +1,7 @@
 import {TestBed, ComponentFixture, getTestBed} from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 import { SideNavComponent } from '../side-nav/side-nav.component';
-import { RoutesService } from '../services/routes.service';
+import { RoutesService } from '../services/routes/routes.service';
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 
 export class RoutesServiceStub {
