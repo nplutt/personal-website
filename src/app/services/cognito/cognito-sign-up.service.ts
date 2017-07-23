@@ -1,41 +1,23 @@
 import { Injectable } from "@angular/core";
 //noinspection TypeScriptCheckImport
-import { CognitoUser, CognitoUserPool } from "amazon-cognito-identity-js";
-import * as AWS from "aws-sdk/global";
-import * as CognitoIdentity from "aws-sdk/clients/cognitoidentity";
+import { AuthenticationDetails, CognitoUser, CognitoUserPool } from "amazon-cognito-identity-js";
 
 import { Router } from '@angular/router';
-
 import { RoutesService } from '../routes/routes.service';
 import { SignUpModel } from '../../models/sign-up.model'
 import { UserService } from '../user/user.service';
-import { SignInModel } from "../../models/sign-in.model";
+import { CognitoUtilService } from './congito-util.service';
 
 
 @Injectable()
-export class CognitoService {
-
-  public static _REGION = 'us-west-2';
-  public static _USER_POOL_ID = 'us-west-2_etWLEXxb7';
-  public static _CLIENT_ID = '1seifkobo236fni0v1b7imsur2';
-
-  public static _POOL_DATA = {
-    UserPoolId: CognitoService._USER_POOL_ID,
-    ClientId: CognitoService._CLIENT_ID
-  };
-
-  public cognitoCreds = AWS.CognitoIdentityCredentials;
+export class CognitoSignUpService {
 
   constructor(
+    private cognitoUtilService: CognitoUtilService,
     private router: Router,
     private routesService: RoutesService,
     private userService: UserService
   ) { }
-
-
-  getUserPool() {
-    return new CognitoUserPool(CognitoService._POOL_DATA)
-  }
 
   signUp(user: SignUpModel): void {
     let attributeList = [];
@@ -46,7 +28,7 @@ export class CognitoService {
     };
     attributeList.push(dataEmail);
 
-    this.getUserPool().signUp(user.email, user.password, attributeList, null, (err, result) => {
+    this.cognitoUtilService.getUserPool().signUp(user.email, user.password, attributeList, null, (err, result) => {
       if (err) {
         console.log(err.message);
       } else {
@@ -64,7 +46,7 @@ export class CognitoService {
 
     let userData = {
       Username: user.email,
-      Pool: this.getUserPool()
+      Pool: this.cognitoUtilService.getUserPool()
     };
 
     let cognitoUser = new CognitoUser(userData);
@@ -77,9 +59,5 @@ export class CognitoService {
         this.routesService.goToSignIn();
       }
     });
-  }
-
-  signIn(user: SignInModel) {
-
   }
 }

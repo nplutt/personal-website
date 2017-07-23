@@ -1,13 +1,13 @@
 import { TestBed, getTestBed, ComponentFixture } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
-import { CognitoService } from '../../services/cognito/cognito.service';
+import { CognitoSignUpService } from '../../services/cognito/cognito-sign-up.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignUpComponent } from './sign-up.component';
 import { UserService } from '../../services/user/user.service';
 
-export class CognitoServiceStub {
+export class cognitoSignUpServiceStub {
   signUp() { }
   confirmRegistration() { }
 }
@@ -21,7 +21,7 @@ export class UserServiceStub {
 }
 
 describe('SignUpComponent', () => {
-  let cognitoService, router, userService;
+  let cognitoSignUpService, router, userService;
   let comp: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
 
@@ -35,7 +35,7 @@ describe('SignUpComponent', () => {
         ReactiveFormsModule
       ],
       providers: [
-        { provide: CognitoService, useClass: CognitoServiceStub },
+        { provide: CognitoSignUpService, useClass: cognitoSignUpServiceStub },
         { provide: Router, useClass: RouterStub },
         { provide: UserService, useClass: UserServiceStub }
       ],
@@ -43,7 +43,7 @@ describe('SignUpComponent', () => {
     }).compileComponents();
 
     let injector = getTestBed();
-    cognitoService = injector.get(CognitoService);
+    cognitoSignUpService = injector.get(CognitoSignUpService);
     router = injector.get(Router);
     userService = injector.get(UserService);
   });
@@ -183,18 +183,18 @@ describe('SignUpComponent', () => {
   });
 
   describe('signUp', () => {
-    it('Should call cognitoService.signUp', () => {
-      spyOn(cognitoService, 'signUp');
+    it('Should call cognitoSignUpService.signUp', () => {
+      spyOn(cognitoSignUpService, 'signUp');
       comp.signUp();
-      expect(cognitoService.signUp).toHaveBeenCalled();
+      expect(cognitoSignUpService.signUp).toHaveBeenCalled();
     });
   });
 
   describe('confirm', () => {
-    it('Should call cognitoService.confirmRegistration', () => {
-      spyOn(cognitoService, 'confirmRegistration');
+    it('Should call cognitoSignUpService.confirmRegistration', () => {
+      spyOn(cognitoSignUpService, 'confirmRegistration');
       comp.confirm();
-      expect(cognitoService.confirmRegistration).toHaveBeenCalled();
+      expect(cognitoSignUpService.confirmRegistration).toHaveBeenCalled();
     });
   });
 

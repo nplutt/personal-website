@@ -1,6 +1,6 @@
 // import { TestBed, getTestBed } from '@angular/core/testing';
 // import { Router } from '@angular/router';
-// import { CognitoService } from './cognito.service';
+// import { CognitoSignUpService } from './cognito.service';
 // import { RoutesService } from '../routes/routes.service';
 // import { UserService } from '../user/user.service';
 // import { SignUpModel } from '../../models/sign-up.model';
@@ -28,13 +28,13 @@
 //   public signUpModel = new SignUpModel();
 // }
 //
-// describe('CognitoService', () => {
+// describe('CognitoSignUpService', () => {
 //   let cognitoUserPool, service;
 //
 //   beforeEach(()=> {
 //     TestBed.configureTestingModule({
 //       providers: [
-//         CognitoService,
+//         CognitoSignUpService,
 //         { provide: CognitoUserPool, useValue: new CognitoUserPoolStub() },
 //         { provide: Router, useClass: RouterStub },
 //         { provide: RoutesService, useClass: RoutesServiceStub },
@@ -44,7 +44,7 @@
 //
 //     let injector = getTestBed();
 //     cognitoUserPool = injector.get(CognitoUserPool);
-//     service = injector.get(CognitoService);
+//     service = injector.get(CognitoSignUpService);
 //   });
 //
 //   describe('signUp', () => {

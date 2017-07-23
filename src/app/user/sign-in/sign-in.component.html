@@ -2,10 +2,10 @@
   <md-card class="card">
     <form #signInForm="ngForm">
       <md-input-container>
-        <input mdInput class="input" type="email" placeholder="Email" [(ngModel)]="userService.signInModel.email">
+        <input mdInput class="input" type="email" name="email" placeholder="Email" [(ngModel)]="userService.signInModel.email">
       </md-input-container>
       <md-input-container>
-        <input mdInput class="input" type="password" placeholder="Password" [(ngModel)]="userService.signInModel.password">
+        <input mdInput class="input" type="password" name="password" placeholder="Password" [(ngModel)]="userService.signInModel.password">
       </md-input-container>
       <button md-button class="button sign-in-button" (click)="signIn()">Sign In</button>
     </form>

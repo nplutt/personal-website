@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CognitoService } from '../../services/cognito/cognito.service';
+import { CognitoSignInService } from '../../services/cognito/cognito-sign-in.service';
 import { UserService } from '../../services/user/user.service';
 
 @Component({
@@ -14,11 +14,11 @@ import { UserService } from '../../services/user/user.service';
 export class SignInComponent {
 
   constructor(
-    private cognitoService: CognitoService,
+    private cognitoSignInService: CognitoSignInService,
     public userService: UserService
   ) { }
 
   signIn(): void {
-    this.cognitoService.signIn(this.userService.signInModel);
+    this.cognitoSignInService.signIn(this.userService.signInModel);
   }
 }

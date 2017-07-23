@@ -5,7 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { CognitoService } from '../services/cognito/cognito.service';
+import { CognitoSignUpService } from '../services/cognito/cognito-sign-up.service';
+import { CognitoSignInService } from '../services/cognito/cognito-sign-in.service';
+import { CognitoUtilService } from '../services/cognito/congito-util.service';
 import { UserService } from '../services/user/user.service';
 
 @NgModule({
@@ -28,7 +30,9 @@ import { UserService } from '../services/user/user.service';
     SignUpComponent
   ],
   providers: [
-    CognitoService,
+    CognitoSignInService,
+    CognitoSignUpService,
+    CognitoUtilService,
     UserService
   ]
 })
