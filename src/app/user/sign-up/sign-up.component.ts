@@ -39,7 +39,6 @@ export class SignUpComponent {
     return this.userService.signUpModel.password === this.userService.signUpModel.confirmPassword;
   }
 
-
   displayConfirmPasswordError(): boolean {
     return !this.passwordsMatch() && this.passwordConfirmFormControl.errors === null &&
       this.passwordConfirmFormControl.touched;
