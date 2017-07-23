@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RoutesService } from '../services/routes.service';
+import { RoutesService } from '../services/routes/routes.service';
 
 @Component({
   selector: 'app-side-nav',

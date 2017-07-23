@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common'
 import { HeaderComponent } from './header.component';
 import { SideNavComponent } from '../side-nav/side-nav.component';
 
-import { RoutesService } from '../services/routes.service';
+import { RoutesService } from '../services/routes/routes.service';
 
 @NgModule({
   declarations: [

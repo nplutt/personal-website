@@ -10,15 +10,16 @@ const appRoutes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HeaderComponent },
   { path: 'sign-in', component: SignInComponent },
-  { path: 'sign-up', component: SignUpComponent},
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'confirmation', component: SignUpComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true }  // This is for debugging only
+      appRoutes
+      // { enableTracing: true }  // This is for debugging only
     )
   ],
   exports: [

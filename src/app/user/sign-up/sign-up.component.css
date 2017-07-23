@@ -1,0 +1,49 @@
+.body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #2962FF;
+}
+
+.card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sign-up-card {
+  width: 250px;
+  height: 300px;
+}
+
+.confirm-card {
+  width: 250px;
+  height: 200px;
+}
+
+.input {
+  width: 250px;
+}
+
+.button {
+  background-color: #0039CB;
+  color: white;
+  width: 250px;
+}
+
+.sign-up-button {
+  margin-top: 40px;
+}
+
+.confirm-button {
+  margin-top: 60px;
+}
+
+.custom-error {
+  margin-top: -14px;
+  height: 14px;
+  font-size: 75%;
+}

@@ -36,4 +36,12 @@ describe('RoutesService', () => {
       expect(router.navigate).toHaveBeenCalledWith(['/sign-up'])
     });
   });
+
+  describe('goToConfirmation', () => {
+    it('Should go to /confirmation?email=muck', () => {
+      spyOn(router, 'navigate');
+      service.goToConfirmation('muck');
+      expect(router.navigate).toHaveBeenCalledWith(['/confirmation'], {'queryParams': {'email': 'muck'}});
+    });
+  });
 });
