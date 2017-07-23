@@ -42,7 +42,7 @@ export class SignUpComponent {
 
   validSignUpForm(): boolean {
     let passwordValid: boolean = this.passwordFormControl.dirty && this.passwordFormControl.errors === null;
-    let passwordConfirmValid: boolean = !this.displayConfirmPasswordError() && this.userService.passwordsMatch();
+    let passwordConfirmValid: boolean = this.userService.passwordsMatch();
     let emailValid: boolean = this.emailFormControl.dirty && this.emailFormControl.errors === null;
 
     return passwordValid && passwordConfirmValid && emailValid;
