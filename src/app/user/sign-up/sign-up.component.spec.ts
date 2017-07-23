@@ -8,16 +8,11 @@ import { SignUpComponent } from './sign-up.component';
 import { UserService } from '../../services/user/user.service';
 
 export class UserServiceStub {
-  signUpModel = {
-    email: null,
-    password: null,
-    passwordFormControl: null,
-    confirmationNumber: null
-  }
+  passwordsMatch() { }
 }
 
 describe('SignUpComponent', () => {
-
+  let userService;
   let comp: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
 
@@ -39,6 +34,7 @@ describe('SignUpComponent', () => {
     }).compileComponents();
 
     let injector = getTestBed();
+    userService = injector.get(UserService);
 
   });
 
@@ -89,21 +85,16 @@ describe('SignUpComponent', () => {
     });
   });
 
-  // describe('', () => {
-  //   it('Should return false if passwords do not match', () => {
-  //     comp.userService.signUpModel.password = ' ';
-  //     comp.userService.signUpModel.confirmPassword = '';
-  //     expect(comp.passwordsMatch()).toBeFalsy();
-  //   });
-  //
-  //   it('Should return true if passwords match', () => {
-  //     comp.userService.signUpModel.password = '';
-  //     comp.userService.signUpModel.confirmPassword = '';
-  //     expect(comp.passwordsMatch()).toBeTruthy();
-  //   });
-  // });
-
   describe('displayConfirmPasswordError', () => {
+    it('Returns true when passwordMatch is false', () => {
+      spyOn(userService, 'passwordsMatch').and.returnValue(false);
+      comp.passwordConfirmFormControl.setValue('Test123$');
+      comp.passwordConfirmFormControl.markAsTouched();
+      expect(comp.displayConfirmPasswordError()).toBeTruthy();
+    });
 
+    it('Returns true when passwordConfirmContorl errors are null', () => {
+
+    });
   });
 });
