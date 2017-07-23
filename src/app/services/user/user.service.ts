@@ -14,4 +14,7 @@ export class UserService {
     this.signUpModel = new SignUpModel();
   }
 
+  passwordsMatch(): boolean {
+    return this.signUpModel.password === this.signUpModel.confirmPassword;
+  }
 }

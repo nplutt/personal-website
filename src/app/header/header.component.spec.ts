@@ -1,4 +1,4 @@
-import {TestBed, ComponentFixture, getTestBed} from '@angular/core/testing';
+import { TestBed, ComponentFixture, getTestBed} from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 import { SideNavComponent } from '../side-nav/side-nav.component';
 import { RoutesService } from '../services/routes/routes.service';
