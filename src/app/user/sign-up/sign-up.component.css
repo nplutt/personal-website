@@ -35,9 +35,15 @@
 }
 
 .sign-up-button {
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .confirm-button {
   margin-top: 60px;
+}
+
+.custom-error {
+  margin-top: -14px;
+  height: 14px;
+  font-size: 75%;
 }

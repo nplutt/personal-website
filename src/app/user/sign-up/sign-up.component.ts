@@ -31,8 +31,26 @@ export class SignUpComponent {
     Validators.pattern(PASSWORD_REGEX)
   ]);
 
+  passwordConfirmFormControl = new FormControl('', [
+    Validators.required
+  ]);
+
   passwordsMatch(): boolean {
     return this.userService.signUpModel.password === this.userService.signUpModel.confirmPassword;
+  }
+
+
+  displayConfirmPasswordError(): boolean {
+    return !this.passwordsMatch() && this.passwordConfirmFormControl.errors === null &&
+      this.passwordConfirmFormControl.touched;
+  }
+
+  validSignUpForm(): boolean {
+    let passwordValid: boolean = this.passwordFormControl.dirty && this.passwordFormControl.errors === null;
+    let passwordConfirmValid: boolean = !this.displayConfirmPasswordError() && this.passwordsMatch();
+    let emailValid: boolean = this.emailFormControl.dirty && this.emailFormControl.errors === null;
+
+    return passwordValid && passwordConfirmValid && emailValid;
   }
 
   signUp(): void {
