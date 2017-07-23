@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { RoutesService } from '../routes/routes.service';
 import { SignUpModel } from '../../models/sign-up.model'
 import { UserService } from '../user/user.service';
+import { SignInModel } from "../../models/sign-in.model";
 
 
 @Injectable()
@@ -78,4 +79,7 @@ export class CognitoService {
     });
   }
 
+  signIn(user: SignInModel) {
+
+  }
 }
