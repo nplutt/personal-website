@@ -4,8 +4,6 @@ import { AuthenticationDetails, CognitoUser, CognitoUserPool } from "amazon-cogn
 
 import { Router } from '@angular/router';
 import { RoutesService } from '../routes/routes.service';
-import { SignUpModel } from '../../models/sign-up.model'
-import { UserService } from '../user/user.service';
 import { CognitoUtilService } from './congito-util.service';
 
 
@@ -15,43 +13,38 @@ export class CognitoSignUpService {
   constructor(
     private cognitoUtilService: CognitoUtilService,
     private router: Router,
-    private routesService: RoutesService,
-    private userService: UserService
+    private routesService: RoutesService
   ) { }
 
-  signUp(user: SignUpModel): void {
+  signUp(email: string, password: string): void {
     let attributeList = [];
 
     let dataEmail = {
       Name: 'email',
-      Value: user.email
+      Value: email
     };
     attributeList.push(dataEmail);
 
-    this.cognitoUtilService.getUserPool().signUp(user.email, user.password, attributeList, null, (err, result) => {
+    this.cognitoUtilService.getUserPool().signUp(email, password, attributeList, null, (err, result) => {
       if (err) {
         console.log(err.message);
       } else {
-        this.routesService.goToConfirmation(user.email);
-        this.userService.signUpModel.password = null;
-        this.userService.signUpModel.confirmPassword = null;
+        this.routesService.goToConfirmation(email);
       }
     });
   }
 
-  confirmRegistration(user: SignUpModel): void {
-    if (!user.email) {
-      user.email = this.router.parseUrl(this.router.url).queryParams['email'];
-    }
+  confirmRegistration(confirmationNumber: string): void {
+   const email = this.router.parseUrl(this.router.url).queryParams['email'];
 
     let userData = {
-      Username: user.email,
+      Username: email,
       Pool: this.cognitoUtilService.getUserPool()
     };
 
     let cognitoUser = new CognitoUser(userData);
 
-    cognitoUser.confirmRegistration(user.confirmationNumber, true, (err, result) => {
+    cognitoUser.confirmRegistration(confirmationNumber, true, (err, result) => {
       if (err) {
         console.log(err.message);
       } else {

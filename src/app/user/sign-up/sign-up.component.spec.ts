@@ -97,29 +97,25 @@ describe('SignUpComponent', () => {
 
   describe('displayConfirmPasswordError', () => {
     it('Returns false when passwordMatch is true', () => {
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.passwordConfirmFormControl.setValue('Test123$');
       comp.passwordConfirmFormControl.markAsTouched();
-      expect(comp.displayConfirmPasswordError()).toBeFalsy();
+      expect(comp.displayConfirmPasswordError('Test123$', 'Test123$')).toBeFalsy();
     });
 
     it('Returns false when errors are not null', () => {
-      spyOn(userService, 'passwordsMatch').and.returnValue(false);
       comp.passwordConfirmFormControl.markAsTouched();
-      expect(comp.displayConfirmPasswordError()).toBeFalsy();
+      expect(comp.displayConfirmPasswordError('Test123$', '')).toBeFalsy();
     });
 
     it('Returns false when touched is not true', () => {
-      spyOn(userService, 'passwordsMatch').and.returnValue(false);
       comp.passwordConfirmFormControl.setValue('Test123$');
-      expect(comp.displayConfirmPasswordError()).toBeFalsy();
+      expect(comp.displayConfirmPasswordError('Test123$', '')).toBeFalsy();
     });
 
     it('Returns true when passwordMatch is false', () => {
-      spyOn(userService, 'passwordsMatch').and.returnValue(false);
       comp.passwordConfirmFormControl.setValue('Test123$');
       comp.passwordConfirmFormControl.markAsTouched();
-      expect(comp.displayConfirmPasswordError()).toBeTruthy();
+      expect(comp.displayConfirmPasswordError('Test123$', '')).toBeTruthy();
     });
   });
 
@@ -127,65 +123,59 @@ describe('SignUpComponent', () => {
     it('Should return true when all values are correct', () => {
       comp.passwordFormControl.markAsDirty();
       comp.passwordFormControl.setValue('Test123$');
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.emailFormControl.markAsDirty();
       comp.emailFormControl.setValue('nplutt@gmail.com');
 
-      expect(comp.validSignUpForm()).toBeTruthy();
+      expect(comp.validSignUpForm('Test123$', 'Test123$')).toBeTruthy();
     });
 
     it('Should return false when passwordFormControl is not dirty', () => {
       comp.passwordFormControl.setValue('Test123$');
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.emailFormControl.markAsDirty();
       comp.emailFormControl.setValue('nplutt@gmail.com');
 
-      expect(comp.validSignUpForm()).toBeFalsy();
+      expect(comp.validSignUpForm('Test123$', 'Test123$')).toBeFalsy();
     });
 
     it('Should return false when passwordFromControl has an error', () => {
       comp.passwordFormControl.markAsDirty();
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.emailFormControl.markAsDirty();
       comp.emailFormControl.setValue('nplutt@gmail.com');
 
-      expect(comp.validSignUpForm()).toBeFalsy();
+      expect(comp.validSignUpForm('Test123$', 'Test123$')).toBeFalsy();
     });
 
     it('Should return false when passwordMatch returns false', () => {
       comp.passwordFormControl.markAsDirty();
       comp.passwordFormControl.setValue('Test123$');
-      spyOn(userService, 'passwordsMatch').and.returnValue(false);
       comp.emailFormControl.markAsDirty();
       comp.emailFormControl.setValue('nplutt@gmail.com');
 
-      expect(comp.validSignUpForm()).toBeFalsy();
+      expect(comp.validSignUpForm('Test123$', '')).toBeFalsy();
     });
 
     it('Should return false when emailFormControl is not dirty', () => {
       comp.passwordFormControl.markAsDirty();
       comp.passwordFormControl.setValue('Test123$');
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.emailFormControl.setValue('nplutt@gmail.com');
 
-      expect(comp.validSignUpForm()).toBeFalsy();
+      expect(comp.validSignUpForm('Test123$', 'Test123$')).toBeFalsy();
     });
 
     it('Should return false when emailFormControl has an error', () => {
       comp.passwordFormControl.markAsDirty();
       comp.passwordFormControl.setValue('Test123$');
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.emailFormControl.markAsDirty();
       comp.emailFormControl.setValue('not an email');
 
-      expect(comp.validSignUpForm()).toBeFalsy();
+      expect(comp.validSignUpForm('Test123$', 'Test123$')).toBeFalsy();
     });
   });
 
   describe('signUp', () => {
     it('Should call cognitoSignUpService.signUp', () => {
       spyOn(cognitoSignUpService, 'signUp');
-      comp.signUp();
+      comp.signUp('', '');
       expect(cognitoSignUpService.signUp).toHaveBeenCalled();
     });
   });
@@ -193,7 +183,7 @@ describe('SignUpComponent', () => {
   describe('confirm', () => {
     it('Should call cognitoSignUpService.confirmRegistration', () => {
       spyOn(cognitoSignUpService, 'confirmRegistration');
-      comp.confirm();
+      comp.confirm('');
       expect(cognitoSignUpService.confirmRegistration).toHaveBeenCalled();
     });
   });

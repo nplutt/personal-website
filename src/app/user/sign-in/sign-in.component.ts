@@ -18,7 +18,7 @@ export class SignInComponent {
     public userService: UserService
   ) { }
 
-  signIn(): void {
-    this.cognitoSignInService.signIn(this.userService.signInModel);
+  signIn(email: string, password: string): void {
+    this.cognitoSignInService.signIn(email, password);
   }
 }

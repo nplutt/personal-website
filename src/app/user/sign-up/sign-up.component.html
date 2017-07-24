@@ -2,32 +2,28 @@
   <md-card class="card sign-up-card" *ngIf="routeAtSignUp()">
     <form #signUpForm="ngForm">
       <md-input-container>
-        <input mdInput class="input" type="email" placeholder="Email" [formControl]="emailFormControl"
-               [(ngModel)]="userService.signUpModel.email">
+        <input mdInput #email class="input" type="email" placeholder="Email" [formControl]="emailFormControl">
         <md-error *ngIf="emailFormControl.hasError('pattern')">Please enter a valid email address</md-error>
         <md-error *ngIf="emailFormControl.hasError('required')">Email is <strong>required</strong></md-error>
       </md-input-container>
       <md-input-container>
-        <input mdInput class="input" type="password" placeholder="Password" [formControl]="passwordFormControl"
-               [(ngModel)]="userService.signUpModel.password">
+        <input mdInput #password class="input" type="password" placeholder="Password" [formControl]="passwordFormControl">
         <md-error *ngIf="passwordFormControl.hasError('pattern')">Password must be at least 8 characters long,
           with at least one uppercase letter, one lowercase letter, one number and one special character.</md-error>
         <md-error *ngIf="passwordFormControl.hasError('required')">Password is <strong>required</strong></md-error>
       </md-input-container>
       <md-input-container>
-        <input mdInput class="input" type="password" placeholder="Confirm password" [formControl]="passwordConfirmFormControl"
-        [(ngModel)]="userService.signUpModel.confirmPassword">
+        <input mdInput #passwordConfirm class="input" type="password" placeholder="Confirm password" [formControl]="passwordConfirmFormControl">
         <md-error *ngIf="passwordConfirmFormControl.hasError('required')">Password confirmation is <strong>required</strong></md-error>
       </md-input-container>
-      <md-error class="custom-error" *ngIf="displayConfirmPasswordError()">Passwords must match</md-error>
-      <button md-button class="button sign-up-button" [disabled]="!validSignUpForm()" (click)="signUp()">Sign Up</button>
+      <md-error class="custom-error" *ngIf="displayConfirmPasswordError(password.value, passwordConfirm.value)">Passwords must match</md-error>
+      <button md-button class="button sign-up-button" [disabled]="!validSignUpForm(password.value, passwordConfirm.value)" (click)="signUp(email.value, password.value)">Sign Up</button>
     </form>
   </md-card>
   <md-card class="card confirm-card" *ngIf="!routeAtSignUp()">
     <md-input-container>
-      <input mdInput class="input" type="string" placeholder="Confirmation Number"
-             [(ngModel)]="userService.signUpModel.confirmationNumber">
+      <input mdInput #confirmationNumber class="input" type="string" placeholder="Confirmation Number">
     </md-input-container>
-    <button md-button class="button confirm-button" (click)="confirm()">Confirm</button>
+    <button md-button class="button confirm-button" (click)="confirm(confirmationNumber.value)">Confirm</button>
   </md-card>
 </div>
