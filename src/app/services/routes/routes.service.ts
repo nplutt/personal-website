@@ -7,6 +7,10 @@ export class RoutesService {
     private router: Router
   ) { }
 
+  goToHome(): void {
+    this.router.navigate(['/home'])
+  }
+
   goToSignIn(): void {
     this.router.navigate(['/sign-in']);
   }

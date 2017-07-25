@@ -1,13 +1,12 @@
 import { TestBed, getTestBed, ComponentFixture } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
-import { CognitoService } from '../../services/cognito/cognito.service';
+import { CognitoSignUpService } from '../../services/cognito/cognito-sign-up.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignUpComponent } from './sign-up.component';
-import { UserService } from '../../services/user/user.service';
 
-export class CognitoServiceStub {
+export class cognitoSignUpServiceStub {
   signUp() { }
   confirmRegistration() { }
 }
@@ -16,12 +15,8 @@ export class RouterStub {
   public url = null;
 }
 
-export class UserServiceStub {
-  passwordsMatch() { }
-}
-
 describe('SignUpComponent', () => {
-  let cognitoService, router, userService;
+  let cognitoSignUpService, router;
   let comp: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
 
@@ -35,17 +30,15 @@ describe('SignUpComponent', () => {
         ReactiveFormsModule
       ],
       providers: [
-        { provide: CognitoService, useClass: CognitoServiceStub },
-        { provide: Router, useClass: RouterStub },
-        { provide: UserService, useClass: UserServiceStub }
+        { provide: CognitoSignUpService, useClass: cognitoSignUpServiceStub },
+        { provide: Router, useClass: RouterStub }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
     let injector = getTestBed();
-    cognitoService = injector.get(CognitoService);
+    cognitoSignUpService = injector.get(CognitoSignUpService);
     router = injector.get(Router);
-    userService = injector.get(UserService);
   });
 
   beforeEach(()=> {
@@ -97,29 +90,25 @@ describe('SignUpComponent', () => {
 
   describe('displayConfirmPasswordError', () => {
     it('Returns false when passwordMatch is true', () => {
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.passwordConfirmFormControl.setValue('Test123$');
       comp.passwordConfirmFormControl.markAsTouched();
-      expect(comp.displayConfirmPasswordError()).toBeFalsy();
+      expect(comp.displayConfirmPasswordError('Test123$', 'Test123$')).toBeFalsy();
     });
 
     it('Returns false when errors are not null', () => {
-      spyOn(userService, 'passwordsMatch').and.returnValue(false);
       comp.passwordConfirmFormControl.markAsTouched();
-      expect(comp.displayConfirmPasswordError()).toBeFalsy();
+      expect(comp.displayConfirmPasswordError('Test123$', '')).toBeFalsy();
     });
 
     it('Returns false when touched is not true', () => {
-      spyOn(userService, 'passwordsMatch').and.returnValue(false);
       comp.passwordConfirmFormControl.setValue('Test123$');
-      expect(comp.displayConfirmPasswordError()).toBeFalsy();
+      expect(comp.displayConfirmPasswordError('Test123$', '')).toBeFalsy();
     });
 
     it('Returns true when passwordMatch is false', () => {
-      spyOn(userService, 'passwordsMatch').and.returnValue(false);
       comp.passwordConfirmFormControl.setValue('Test123$');
       comp.passwordConfirmFormControl.markAsTouched();
-      expect(comp.displayConfirmPasswordError()).toBeTruthy();
+      expect(comp.displayConfirmPasswordError('Test123$', '')).toBeTruthy();
     });
   });
 
@@ -127,74 +116,68 @@ describe('SignUpComponent', () => {
     it('Should return true when all values are correct', () => {
       comp.passwordFormControl.markAsDirty();
       comp.passwordFormControl.setValue('Test123$');
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.emailFormControl.markAsDirty();
       comp.emailFormControl.setValue('nplutt@gmail.com');
 
-      expect(comp.validSignUpForm()).toBeTruthy();
+      expect(comp.validSignUpForm('Test123$', 'Test123$')).toBeTruthy();
     });
 
     it('Should return false when passwordFormControl is not dirty', () => {
       comp.passwordFormControl.setValue('Test123$');
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.emailFormControl.markAsDirty();
       comp.emailFormControl.setValue('nplutt@gmail.com');
 
-      expect(comp.validSignUpForm()).toBeFalsy();
+      expect(comp.validSignUpForm('Test123$', 'Test123$')).toBeFalsy();
     });
 
     it('Should return false when passwordFromControl has an error', () => {
       comp.passwordFormControl.markAsDirty();
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.emailFormControl.markAsDirty();
       comp.emailFormControl.setValue('nplutt@gmail.com');
 
-      expect(comp.validSignUpForm()).toBeFalsy();
+      expect(comp.validSignUpForm('Test123$', 'Test123$')).toBeFalsy();
     });
 
     it('Should return false when passwordMatch returns false', () => {
       comp.passwordFormControl.markAsDirty();
       comp.passwordFormControl.setValue('Test123$');
-      spyOn(userService, 'passwordsMatch').and.returnValue(false);
       comp.emailFormControl.markAsDirty();
       comp.emailFormControl.setValue('nplutt@gmail.com');
 
-      expect(comp.validSignUpForm()).toBeFalsy();
+      expect(comp.validSignUpForm('Test123$', '')).toBeFalsy();
     });
 
     it('Should return false when emailFormControl is not dirty', () => {
       comp.passwordFormControl.markAsDirty();
       comp.passwordFormControl.setValue('Test123$');
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.emailFormControl.setValue('nplutt@gmail.com');
 
-      expect(comp.validSignUpForm()).toBeFalsy();
+      expect(comp.validSignUpForm('Test123$', 'Test123$')).toBeFalsy();
     });
 
     it('Should return false when emailFormControl has an error', () => {
       comp.passwordFormControl.markAsDirty();
       comp.passwordFormControl.setValue('Test123$');
-      spyOn(userService, 'passwordsMatch').and.returnValue(true);
       comp.emailFormControl.markAsDirty();
       comp.emailFormControl.setValue('not an email');
 
-      expect(comp.validSignUpForm()).toBeFalsy();
+      expect(comp.validSignUpForm('Test123$', 'Test123$')).toBeFalsy();
     });
   });
 
   describe('signUp', () => {
-    it('Should call cognitoService.signUp', () => {
-      spyOn(cognitoService, 'signUp');
-      comp.signUp();
-      expect(cognitoService.signUp).toHaveBeenCalled();
+    it('Should call cognitoSignUpService.signUp', () => {
+      spyOn(cognitoSignUpService, 'signUp');
+      comp.signUp('', '');
+      expect(cognitoSignUpService.signUp).toHaveBeenCalled();
     });
   });
 
   describe('confirm', () => {
-    it('Should call cognitoService.confirmRegistration', () => {
-      spyOn(cognitoService, 'confirmRegistration');
-      comp.confirm();
-      expect(cognitoService.confirmRegistration).toHaveBeenCalled();
+    it('Should call cognitoSignUpService.confirmRegistration', () => {
+      spyOn(cognitoSignUpService, 'confirmRegistration');
+      comp.confirm('');
+      expect(cognitoSignUpService.confirmRegistration).toHaveBeenCalled();
     });
   });
 

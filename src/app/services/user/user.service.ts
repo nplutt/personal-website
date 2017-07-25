@@ -1,20 +1,9 @@
 import { Injectable } from '@angular/core';
-import { SignUpModel } from '../../models/sign-up.model';
+import { UserModel } from '../../models/user.model';
 
 @Injectable()
 export class UserService {
 
-  public signUpModel: SignUpModel;
+  public userModel: UserModel = new UserModel();
 
-  constructor() {
-    this.resetSignUpModel()
-  }
-
-  resetSignUpModel(): void {
-    this.signUpModel = new SignUpModel();
-  }
-
-  passwordsMatch(): boolean {
-    return this.signUpModel.password === this.signUpModel.confirmPassword;
-  }
 }

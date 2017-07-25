@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { CognitoService } from '../../services/cognito/cognito.service';
-import { UserService } from '../../services/user/user.service';
+import { CognitoSignUpService } from '../../services/cognito/cognito-sign-up.service';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
@@ -10,15 +9,17 @@ const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d
 @Component({
   selector: 'sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: [
+    './sign-up.component.css',
+    '../user.module.css'
+  ]
 })
 
 export class SignUpComponent {
 
   constructor(
-    private cognitoService: CognitoService,
-    private router: Router,
-    public userService: UserService
+    private cognitoSignUpService: CognitoSignUpService,
+    private router: Router
   ) { }
 
   emailFormControl = new FormControl('', [
@@ -35,25 +36,25 @@ export class SignUpComponent {
     Validators.required
   ]);
 
-  displayConfirmPasswordError(): boolean {
-    return !this.userService.passwordsMatch() && this.passwordConfirmFormControl.errors === null &&
+  displayConfirmPasswordError(password: string, confirmPassword: string): boolean {
+    return !(password === confirmPassword) && this.passwordConfirmFormControl.errors === null &&
       this.passwordConfirmFormControl.touched;
   }
 
-  validSignUpForm(): boolean {
+  validSignUpForm(password: string, confirmPassword: string): boolean {
     let passwordValid: boolean = this.passwordFormControl.dirty && this.passwordFormControl.errors === null;
-    let passwordConfirmValid: boolean = this.userService.passwordsMatch();
+    let passwordConfirmValid: boolean = password === confirmPassword;
     let emailValid: boolean = this.emailFormControl.dirty && this.emailFormControl.errors === null;
 
     return passwordValid && passwordConfirmValid && emailValid;
   }
 
-  signUp(): void {
-    this.cognitoService.signUp(this.userService.signUpModel);
+  signUp(email: string, password: string): void {
+    this.cognitoSignUpService.signUp(email, password);
   }
 
-  confirm(): void {
-    this.cognitoService.confirmRegistration(this.userService.signUpModel);
+  confirm(confirmationNumber: string): void {
+    this.cognitoSignUpService.confirmRegistration(confirmationNumber);
   }
 
   routeAtSignUp(): boolean {
