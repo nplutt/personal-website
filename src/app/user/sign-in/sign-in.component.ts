@@ -14,8 +14,7 @@ import { UserService } from '../../services/user/user.service';
 export class SignInComponent {
 
   constructor(
-    private cognitoSignInService: CognitoSignInService,
-    public userService: UserService
+    private cognitoSignInService: CognitoSignInService
   ) { }
 
   signIn(email: string, password: string): void {

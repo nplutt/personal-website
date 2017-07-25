@@ -5,7 +5,6 @@ import { CognitoSignUpService } from '../../services/cognito/cognito-sign-up.ser
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignUpComponent } from './sign-up.component';
-import { UserService } from '../../services/user/user.service';
 
 export class cognitoSignUpServiceStub {
   signUp() { }
@@ -16,12 +15,8 @@ export class RouterStub {
   public url = null;
 }
 
-export class UserServiceStub {
-  passwordsMatch() { }
-}
-
 describe('SignUpComponent', () => {
-  let cognitoSignUpService, router, userService;
+  let cognitoSignUpService, router;
   let comp: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
 
@@ -36,8 +31,7 @@ describe('SignUpComponent', () => {
       ],
       providers: [
         { provide: CognitoSignUpService, useClass: cognitoSignUpServiceStub },
-        { provide: Router, useClass: RouterStub },
-        { provide: UserService, useClass: UserServiceStub }
+        { provide: Router, useClass: RouterStub }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
@@ -45,7 +39,6 @@ describe('SignUpComponent', () => {
     let injector = getTestBed();
     cognitoSignUpService = injector.get(CognitoSignUpService);
     router = injector.get(Router);
-    userService = injector.get(UserService);
   });
 
   beforeEach(()=> {
