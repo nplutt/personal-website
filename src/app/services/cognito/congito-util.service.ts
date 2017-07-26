@@ -8,8 +8,8 @@ import * as AWS from "aws-sdk/global";
 export class CognitoUtilService {
 
   public static _REGION = 'us-west-2';
-  public static _USER_POOL_ID = 'us-west-2_etWLEXxb7';
-  public static _CLIENT_ID = '1seifkobo236fni0v1b7imsur2';
+  public static _USER_POOL_ID = 'us-west-2_CjUKKsjTD';
+  public static _CLIENT_ID = '17n7b3rrrosjd7nttlcfp4a2m6';
 
   public static _POOL_DATA = {
     UserPoolId: CognitoUtilService._USER_POOL_ID,
