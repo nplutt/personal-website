@@ -2,6 +2,7 @@ import { TestBed, ComponentFixture, getTestBed} from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 import { SideNavComponent } from '../side-nav/side-nav.component';
 import { RoutesService } from '../services/routes/routes.service';
+import { UserService } from '../services/user/user.service';
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 
 export class RoutesServiceStub {
@@ -9,8 +10,13 @@ export class RoutesServiceStub {
   goToSignUp(): void { }
 }
 
+export class UserServiceStub {
+  signedIn(): void { }
+  signOut(): void { }
+}
+
 describe('HeaderComponent', () => {
-  let routesService;
+  let routesService, userService;
   let comp: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
@@ -21,13 +27,15 @@ describe('HeaderComponent', () => {
         SideNavComponent,
       ],
       providers: [
-        { provide: RoutesService, useClass: RoutesServiceStub}
+        { provide: RoutesService, useClass: RoutesServiceStub },
+        { provide: UserService, useClass: UserServiceStub }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
     let injector = getTestBed();
     routesService = injector.get(RoutesService);
+    userService = injector.get(UserService);
   });
 
   beforeEach(()=> {
@@ -60,6 +68,21 @@ describe('HeaderComponent', () => {
       spyOn(routesService, 'goToSignIn');
       comp.goToSignIn();
       expect(routesService.goToSignIn).toHaveBeenCalled();
+    });
+  });
+
+  describe('signedIn', () => {
+    it('Should call userService.signedIn', () => {
+      spyOn(userService, 'signedIn').and.returnValue(false);
+      expect(comp.signedIn()).toBeFalsy();
+    });
+  });
+
+  describe('signOut', () => {
+    it('Should call userService.signOut', () => {
+      spyOn(userService, 'signOut');
+      comp.signOut();
+      expect(userService.signOut).toHaveBeenCalled();
     });
   });
 });

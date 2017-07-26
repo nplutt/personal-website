@@ -3,10 +3,15 @@
   <div class="list-item">
     <button md-button>Add Listing</button>
   </div>
-  <div class="list-item">
-    <button md-button (click)="goToSignUp()">Sign Up</button>
+  <div class="not-signed-in" *ngIf="!signedIn()">
+    <div class="list-item">
+      <button md-button (click)="goToSignUp()">Sign Up</button>
+    </div>
+    <div class="list-item">
+      <button md-button (click)="goToSignIn()">Sign In</button>
+    </div>
   </div>
-  <div class="list-item">
-    <button md-button (click)="goToSignIn()">Sign In</button>
+  <div class="signed-in" *ngIf="signedIn()">
+    <button md-button (click)="signOut()">Sign Out</button>
   </div>
 </div>
