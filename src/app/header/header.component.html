@@ -9,13 +9,9 @@
     <div class="header-title">Magna Living</div>
     <div class="header-spacer"></div>
     <div class="right-buttons" *ngIf="showButtons()">
-      <div class="not-signed-in" *ngIf="!signedIn()">
-        <button md-button class="header-button" (click)="goToSignUp()">Sign Up</button>
-        <button md-button class="header-button" (click)="goToSignIn()">Sign In</button>
-      </div>
-      <div class="signed-in" *ngIf="signedIn()">
-        <button md-button class="header-button" (click)="signOut()">Sign Out</button>
-      </div>
+      <button md-button class="header-button" *ngIf="!signedIn()" (click)="goToSignUp()">Sign Up</button>
+      <button md-button class="header-button" *ngIf="!signedIn()" (click)="goToSignIn()">Sign In</button>
+      <button md-button class="header-button" *ngIf="signedIn()" (click)="signOut()">Sign Out</button>
     </div>
   </div>
 </md-sidenav-container>

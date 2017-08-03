@@ -20,4 +20,4 @@ ng build --target=production --environment=prod --deploy-url=https://s3-us-west-
 
 # Deploy the UI to the web S3 bucket
 pip install awscli
-aws s3 cp dist s3://nplutt.apartments.ui/ --recursive
+aws s3 cp dist s3://$BUCKET/ --recursive
