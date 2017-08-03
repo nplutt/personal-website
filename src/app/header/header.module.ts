@@ -1,11 +1,13 @@
 import { MdButtonModule, MdIconModule, MdListModule, MdSidenavModule } from '@angular/material'
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import { HeaderComponent } from './header.component';
 import { SideNavComponent } from '../side-nav/side-nav.component';
 
 import { RoutesService } from '../services/routes/routes.service';
+import { TestService } from '../services/http/test.service';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,7 @@ import { RoutesService } from '../services/routes/routes.service';
   ],
   imports: [
     CommonModule,
+    HttpModule,
     MdButtonModule,
     MdIconModule,
     MdListModule,
@@ -24,7 +27,8 @@ import { RoutesService } from '../services/routes/routes.service';
     SideNavComponent
   ],
   providers: [
-    RoutesService
+    RoutesService,
+    TestService
   ]
 })
 

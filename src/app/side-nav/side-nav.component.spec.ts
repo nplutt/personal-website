@@ -2,7 +2,8 @@ import {TestBed, ComponentFixture, getTestBed} from '@angular/core/testing';
 import { SideNavComponent } from './side-nav.component';
 import { RoutesService } from '../services/routes/routes.service';
 import { UserService } from '../services/user/user.service';
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import { TestService } from '../services/http/test.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 export class RoutesServiceStub {
   goToSignIn(): void { }
@@ -26,7 +27,8 @@ describe('SideNavComponent', () => {
       ],
       providers: [
         { provide: RoutesService, useClass: RoutesServiceStub },
-        { provide: UserService, useClass: UserServiceStub }
+        { provide: UserService, useClass: UserServiceStub },
+        { provide: TestService }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();

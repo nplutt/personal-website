@@ -3,7 +3,8 @@ import { HeaderComponent } from './header.component';
 import { SideNavComponent } from '../side-nav/side-nav.component';
 import { RoutesService } from '../services/routes/routes.service';
 import { UserService } from '../services/user/user.service';
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import { TestService } from '../services/http/test.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 export class RoutesServiceStub {
   goToSignIn(): void { }
@@ -28,7 +29,8 @@ describe('HeaderComponent', () => {
       ],
       providers: [
         { provide: RoutesService, useClass: RoutesServiceStub },
-        { provide: UserService, useClass: UserServiceStub }
+        { provide: UserService, useClass: UserServiceStub },
+        { provide: TestService }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();

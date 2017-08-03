@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RoutesService } from '../services/routes/routes.service';
 import { UserService } from '../services/user/user.service';
+import { TestService } from '../services/http/test.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -12,7 +13,8 @@ export class SideNavComponent {
 
   constructor(
     private routesService: RoutesService,
-    private userService: UserService
+    private userService: UserService,
+    private testService: TestService
   ) { }
 
   goToSignIn(): void {
@@ -28,7 +30,10 @@ export class SideNavComponent {
   }
 
   signOut(): void {
-    return this.userService.signOut();
+    this.userService.signOut();
   }
 
+  muck(): void {
+    this.testService.getVehicles();
+  }
 }

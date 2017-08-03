@@ -1,7 +1,7 @@
 <div class="body">
   <div id="header">Magna Living</div>
   <div class="list-item">
-    <button md-button>Add Listing</button>
+    <button md-button (click)="muck()">Add Listing</button>
   </div>
   <div class="not-signed-in" *ngIf="!signedIn()">
     <div class="list-item">
