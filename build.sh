@@ -9,9 +9,6 @@ pip install nodeenv
 nodeenv -p
 
 # Build the UI
-#npm install @angular/cli
-#npm link @angular/cli
-#rm package-lock.json
 npm install
 npm link @angular/cli
 npm uninstall zone.js
