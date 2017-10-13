@@ -1,4 +1,4 @@
-import { MdButtonModule, MdCardModule, MdIconModule, MdInputModule, MdTooltipModule } from '@angular/material'
+import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatTooltipModule } from '@angular/material'
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -18,11 +18,11 @@ import { UserService } from '../services/user/user.service';
   imports: [
     CommonModule,
     FormsModule,
-    MdButtonModule,
-    MdCardModule,
-    MdIconModule,
-    MdInputModule,
-    MdTooltipModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatInputModule,
+    MatTooltipModule,
     ReactiveFormsModule
   ],
   exports: [

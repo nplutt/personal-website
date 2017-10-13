@@ -1,29 +1,29 @@
 <div class="body">
-  <md-card class="card sign-up-card" *ngIf="routeAtSignUp()">
+  <mat-card class="card sign-up-card" *ngIf="routeAtSignUp()">
     <form #signUpForm="ngForm">
-      <md-input-container>
+      <mat-input-container>
         <input mdInput #email class="input" type="email" placeholder="Email" [formControl]="emailFormControl">
-        <md-error *ngIf="emailFormControl.hasError('pattern')">Please enter a valid email address</md-error>
-        <md-error *ngIf="emailFormControl.hasError('required')">Email is <strong>required</strong></md-error>
-      </md-input-container>
-      <md-input-container>
+        <mat-error *ngIf="emailFormControl.hasError('pattern')">Please enter a valid email address</mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">Email is <strong>required</strong></mat-error>
+      </mat-input-container>
+      <mat-input-container>
         <input mdInput #password class="input" type="password" placeholder="Password" [formControl]="passwordFormControl">
-        <md-error *ngIf="passwordFormControl.hasError('pattern')">Password must be at least 8 characters long,
-          with at least one uppercase letter, one lowercase letter, one number and one special character.</md-error>
-        <md-error *ngIf="passwordFormControl.hasError('required')">Password is <strong>required</strong></md-error>
-      </md-input-container>
-      <md-input-container>
+        <mat-error *ngIf="passwordFormControl.hasError('pattern')">Password must be at least 8 characters long,
+          with at least one uppercase letter, one lowercase letter, one number and one special character.</mat-error>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">Password is <strong>required</strong></mat-error>
+      </mat-input-container>
+      <mat-input-container>
         <input mdInput #passwordConfirm class="input" type="password" placeholder="Confirm password" [formControl]="passwordConfirmFormControl">
-        <md-error *ngIf="passwordConfirmFormControl.hasError('required')">Password confirmation is <strong>required</strong></md-error>
-      </md-input-container>
-      <md-error class="custom-error" *ngIf="displayConfirmPasswordError(password.value, passwordConfirm.value)">Passwords must match</md-error>
-      <button md-button class="button sign-up-button" [disabled]="!validSignUpForm(password.value, passwordConfirm.value)" (click)="signUp(email.value, password.value)">Sign Up</button>
+        <mat-error *ngIf="passwordConfirmFormControl.hasError('required')">Password confirmation is <strong>required</strong></mat-error>
+      </mat-input-container>
+      <mat-error class="custom-error" *ngIf="displayConfirmPasswordError(password.value, passwordConfirm.value)">Passwords must match</mat-error>
+      <button mat-button class="button sign-up-button" [disabled]="!validSignUpForm(password.value, passwordConfirm.value)" (click)="signUp(email.value, password.value)">Sign Up</button>
     </form>
-  </md-card>
-  <md-card class="card confirm-card" *ngIf="!routeAtSignUp()">
-    <md-input-container>
+  </mat-card>
+  <mat-card class="card confirm-card" *ngIf="!routeAtSignUp()">
+    <mat-input-container>
       <input mdInput #confirmationNumber class="input" type="string" placeholder="Confirmation Number">
-    </md-input-container>
-    <button md-button class="button confirm-button" (click)="confirm(confirmationNumber.value)">Confirm</button>
-  </md-card>
+    </mat-input-container>
+    <button mat-button class="button confirm-button" (click)="confirm(confirmationNumber.value)">Confirm</button>
+  </mat-card>
 </div>

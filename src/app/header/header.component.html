@@ -1,17 +1,17 @@
-<md-sidenav-container id="page">
-  <md-sidenav #sidenav class="example-sidenav">
+<mat-sidenav-container id="page">
+  <mat-sidenav #sidenav class="example-sidenav">
     <app-side-nav></app-side-nav>
-  </md-sidenav>
+  </mat-sidenav>
   <div id="header">
-    <button md-button id="header-menu" (click)="sidenav.toggle()">
-      <md-icon>menu</md-icon>
+    <button mat-button id="header-menu" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
     </button>
     <div class="header-title">Magna Living</div>
     <div class="header-spacer"></div>
     <div class="right-buttons" *ngIf="showButtons()">
-      <button md-button class="header-button" *ngIf="!signedIn()" (click)="goToSignUp()">Sign Up</button>
-      <button md-button class="header-button" *ngIf="!signedIn()" (click)="goToSignIn()">Sign In</button>
-      <button md-button class="header-button" *ngIf="signedIn()" (click)="signOut()">Sign Out</button>
+      <button mat-button class="header-button" *ngIf="!signedIn()" (click)="goToSignUp()">Sign Up</button>
+      <button mat-button class="header-button" *ngIf="!signedIn()" (click)="goToSignIn()">Sign In</button>
+      <button mat-button class="header-button" *ngIf="signedIn()" (click)="signOut()">Sign Out</button>
     </div>
   </div>
-</md-sidenav-container>
+</mat-sidenav-container>

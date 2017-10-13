@@ -1,4 +1,4 @@
-import { MdButtonModule, MdIconModule, MdListModule, MdSidenavModule } from '@angular/material'
+import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule } from '@angular/material'
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
@@ -17,10 +17,10 @@ import { TestService } from '../services/http/test.service';
   imports: [
     CommonModule,
     HttpModule,
-    MdButtonModule,
-    MdIconModule,
-    MdListModule,
-    MdSidenavModule
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatSidenavModule
   ],
   exports: [
     HeaderComponent,

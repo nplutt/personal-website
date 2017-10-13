@@ -1,17 +1,17 @@
 <div class="body">
   <div id="header">Magna Living</div>
   <div class="list-item">
-    <button md-button (click)="muck()">Add Listing</button>
+    <button mat-button (click)="muck()">Add Listing</button>
   </div>
   <div class="not-signed-in" *ngIf="!signedIn()">
     <div class="list-item">
-      <button md-button (click)="goToSignUp()">Sign Up</button>
+      <button mat-button (click)="goToSignUp()">Sign Up</button>
     </div>
     <div class="list-item">
-      <button md-button (click)="goToSignIn()">Sign In</button>
+      <button mat-button (click)="goToSignIn()">Sign In</button>
     </div>
   </div>
   <div class="list-item signed-in" *ngIf="signedIn()">
-    <button md-button (click)="signOut()">Sign Out</button>
+    <button mat-button (click)="signOut()">Sign Out</button>
   </div>
 </div>
