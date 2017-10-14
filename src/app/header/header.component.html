@@ -6,12 +6,12 @@
     <button mat-button id="header-menu" (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <div class="header-title">Magna Living</div>
+    <div class="header-title">Nick Plutt</div>
     <div class="header-spacer"></div>
     <div class="right-buttons" *ngIf="showButtons()">
-      <button mat-button class="header-button" *ngIf="!signedIn()" (click)="goToSignUp()">Sign Up</button>
-      <button mat-button class="header-button" *ngIf="!signedIn()" (click)="goToSignIn()">Sign In</button>
-      <button mat-button class="header-button" *ngIf="signedIn()" (click)="signOut()">Sign Out</button>
+      <button mat-button class="header-button" (click)="goToHome()">Home</button>
+      <button mat-button class="header-button" (click)="goToPortfolio()">Portfolio</button>
+      <button mat-button class="header-button" (click)="goToBlog()">Blog</button>
     </div>
   </div>
 </mat-sidenav-container>

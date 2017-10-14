@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { RoutesService } from '../services/routes/routes.service';
-import { UserService } from '../services/user/user.service';
-import { TestService } from '../services/http/test.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -12,28 +10,18 @@ import { TestService } from '../services/http/test.service';
 export class SideNavComponent {
 
   constructor(
-    private routesService: RoutesService,
-    private userService: UserService,
-    private testService: TestService
+    private routesService: RoutesService
   ) { }
 
-  goToSignIn(): void {
-    this.routesService.goToSignIn();
+  goToHome(): void {
+    this.routesService.goToHome();
   }
 
-  goToSignUp(): void {
-    this.routesService.goToSignUp();
+  goToPortfolio(): void {
+    this.routesService.goToPortfolio();
   }
 
-  signedIn(): boolean {
-    return this.userService.signedIn();
-  }
-
-  signOut(): void {
-    this.userService.signOut();
-  }
-
-  muck(): void {
-    this.testService.getVehicles();
+  goToBlog(): void {
+    this.routesService.goToBlog();
   }
 }

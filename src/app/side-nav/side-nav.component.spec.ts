@@ -1,18 +1,12 @@
 import {TestBed, ComponentFixture, getTestBed} from '@angular/core/testing';
 import { SideNavComponent } from './side-nav.component';
 import { RoutesService } from '../services/routes/routes.service';
-import { UserService } from '../services/user/user.service';
-import { TestService } from '../services/http/test.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 export class RoutesServiceStub {
-  goToSignIn(): void { }
-  goToSignUp(): void { }
-}
-
-export class UserServiceStub {
-  signedIn(): void { }
-  signOut(): void { }
+  goToHome(): void { }
+  goToPortfolio(): void { }
+  goToBlog(): void { }
 }
 
 describe('SideNavComponent', () => {
@@ -26,16 +20,13 @@ describe('SideNavComponent', () => {
         SideNavComponent
       ],
       providers: [
-        { provide: RoutesService, useClass: RoutesServiceStub },
-        { provide: UserService, useClass: UserServiceStub },
-        { provide: TestService }
+        { provide: RoutesService, useClass: RoutesServiceStub }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
     let injector = getTestBed();
     routesService = injector.get(RoutesService);
-    userService = injector.get(UserService);
   });
 
   beforeEach(()=> {
@@ -43,34 +34,27 @@ describe('SideNavComponent', () => {
     comp = fixture.componentInstance;
   });
 
-  describe('goToSignUp', () => {
-    it('Should call routesService.goToSignUp', () => {
-      spyOn(routesService, 'goToSignUp');
-      comp.goToSignUp();
-      expect(routesService.goToSignUp).toHaveBeenCalled();
+  describe('goToHome', () => {
+    it('Should call routesService.goToHome', () => {
+      spyOn(routesService, 'goToHome');
+      comp.goToHome();
+      expect(routesService.goToHome).toHaveBeenCalled();
     });
   });
 
-  describe('goToSignIn', () => {
-    it('Should call routesService.goToSignIn', () => {
-      spyOn(routesService, 'goToSignIn');
-      comp.goToSignIn();
-      expect(routesService.goToSignIn).toHaveBeenCalled();
+  describe('goToPortfolio', () => {
+    it('Should call routesService.goToPortfolio', () => {
+      spyOn(routesService, 'goToPortfolio');
+      comp.goToPortfolio();
+      expect(routesService.goToPortfolio).toHaveBeenCalled();
     });
   });
 
-  describe('signedIn', () => {
-    it('Should call userService.signedIn', () => {
-      spyOn(userService, 'signedIn').and.returnValue(false);
-      expect(comp.signedIn()).toBeFalsy();
-    });
-  });
-
-  describe('signOut', () => {
-    it('Should call userService.signOut', () => {
-      spyOn(userService, 'signOut');
-      comp.signOut();
-      expect(userService.signOut).toHaveBeenCalled();
+  describe('goToBlog', () => {
+    it('Should call routesService.goToBlog', () => {
+      spyOn(routesService, 'goToBlog');
+      comp.goToBlog();
+      expect(routesService.goToBlog).toHaveBeenCalled();
     });
   });
 });

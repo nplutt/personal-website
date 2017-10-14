@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RoutesService } from '../services/routes/routes.service'
-import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +13,6 @@ export class HeaderComponent {
 
   constructor(
     private routesService: RoutesService,
-    private userService: UserService
   ) {
     this.width = window.screen.width;
   }
@@ -23,19 +21,15 @@ export class HeaderComponent {
     return this.width > 580;
   }
 
-  goToSignIn(): void {
-    this.routesService.goToSignIn();
+  goToHome(): void {
+    this.routesService.goToHome();
   }
 
-  goToSignUp(): void {
-    this.routesService.goToSignUp();
+  goToPortfolio(): void {
+    this.routesService.goToPortfolio();
   }
 
-  signedIn(): boolean {
-    return this.userService.signedIn();
-  }
-
-  signOut(): void {
-    this.userService.signOut();
+  goToBlog(): void {
+    this.routesService.goToBlog();
   }
 }

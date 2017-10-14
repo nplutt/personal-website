@@ -21,27 +21,27 @@ describe('RoutesService', () => {
     service = injector.get(RoutesService);
   });
 
-  describe('goToSignIn', () => {
-    it('Should call navigate with /sign-in', () => {
+  describe('goToHome', () => {
+    it('Should call navigate with /home', () => {
         spyOn(router, 'navigate');
-        service.goToSignIn();
-        expect(router.navigate).toHaveBeenCalledWith(['/sign-in'])
+        service.goToHome();
+        expect(router.navigate).toHaveBeenCalledWith(['/home'])
     });
   });
 
-  describe('goToSignUp', () => {
-    it('Should call navigate with /sign-up', () => {
+  describe('goToPortfolio', () => {
+    it('Should call navigate with /portfolio', () => {
       spyOn(router, 'navigate');
-      service.goToSignUp();
-      expect(router.navigate).toHaveBeenCalledWith(['/sign-up'])
+      service.goToPortfolio();
+      expect(router.navigate).toHaveBeenCalledWith(['/portfolio'])
     });
   });
 
-  describe('goToConfirmation', () => {
-    it('Should go to /confirmation?email=muck', () => {
+  describe('goToBlog', () => {
+    it('Should go to /blog', () => {
       spyOn(router, 'navigate');
-      service.goToConfirmation('muck');
-      expect(router.navigate).toHaveBeenCalledWith(['/confirmation'], {'queryParams': {'email': 'muck'}});
+      service.goToBlog();
+      expect(router.navigate).toHaveBeenCalledWith(['/blog']);
     });
   });
 });

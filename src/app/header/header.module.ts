@@ -7,7 +7,6 @@ import { HeaderComponent } from './header.component';
 import { SideNavComponent } from '../side-nav/side-nav.component';
 
 import { RoutesService } from '../services/routes/routes.service';
-import { TestService } from '../services/http/test.service';
 
 @NgModule({
   declarations: [
@@ -27,8 +26,7 @@ import { TestService } from '../services/http/test.service';
     SideNavComponent
   ],
   providers: [
-    RoutesService,
-    TestService
+    RoutesService
   ]
 })
 

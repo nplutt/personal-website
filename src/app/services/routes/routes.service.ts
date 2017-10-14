@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class RoutesService {
@@ -8,22 +8,14 @@ export class RoutesService {
   ) { }
 
   goToHome(): void {
-    this.router.navigate(['/home'])
+    this.router.navigate(['/home']);
   }
 
-  goToSignIn(): void {
-    this.router.navigate(['/sign-in']);
+  goToPortfolio(): void {
+    this.router.navigate(['/portfolio']);
   }
 
-  goToSignUp(): void {
-    this.router.navigate(['/sign-up']);
-  }
-
-  goToConfirmation(email: string): void {
-    const params: NavigationExtras = {
-      queryParams: { 'email': email }
-    };
-
-    this.router.navigate(['/confirmation'], params);
+  goToBlog(): void {
+    this.router.navigate(['/blog']);
   }
 }
