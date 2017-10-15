@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RoutesService } from '../services/routes/routes.service';
+import { MatSidenav } from "@angular/material";
 
 @Component({
   selector: 'app-side-nav',
@@ -9,19 +10,24 @@ import { RoutesService } from '../services/routes/routes.service';
 
 export class SideNavComponent {
 
+  @Input() private sidenav: MatSidenav;
+
   constructor(
     private routesService: RoutesService
   ) { }
 
   goToAbout(): void {
     this.routesService.goToAbout();
+    this.sidenav.close();
   }
 
   goToPortfolio(): void {
     this.routesService.goToPortfolio();
+    this.sidenav.close();
   }
 
   goToBlog(): void {
     this.routesService.goToBlog();
+    this.sidenav.close();
   }
 }
