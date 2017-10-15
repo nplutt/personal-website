@@ -50,7 +50,7 @@ describe('HeaderComponent', () => {
 
   describe('goToAbout', () => {
     it('Should call routesService.goToAbout', () => {
-      spyOn(routesService, 'goToHome');
+      spyOn(routesService, 'goToAbout');
       comp.goToAbout();
       expect(routesService.goToAbout).toHaveBeenCalled();
     });

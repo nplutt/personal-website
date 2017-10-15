@@ -2,6 +2,11 @@ import {TestBed, ComponentFixture, getTestBed} from '@angular/core/testing';
 import { SideNavComponent } from './side-nav.component';
 import { RoutesService } from '../services/routes/routes.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { MatSidenav } from "@angular/material";
+
+export class MatSidenavStub {
+  close(): void { }
+}
 
 export class RoutesServiceStub {
   goToAbout(): void { }
@@ -10,7 +15,7 @@ export class RoutesServiceStub {
 }
 
 describe('SideNavComponent', () => {
-  let routesService, userService;
+  let routesService, sidenav;
   let comp: SideNavComponent;
   let fixture: ComponentFixture<SideNavComponent>;
 
@@ -20,18 +25,21 @@ describe('SideNavComponent', () => {
         SideNavComponent
       ],
       providers: [
-        { provide: RoutesService, useClass: RoutesServiceStub }
+        { provide: RoutesService, useClass: RoutesServiceStub },
+        { provide: MatSidenav, useClass: MatSidenavStub }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
     let injector = getTestBed();
     routesService = injector.get(RoutesService);
+    sidenav = injector.get(MatSidenav);
   });
 
   beforeEach(()=> {
     fixture = TestBed.createComponent(SideNavComponent);
     comp = fixture.componentInstance;
+    comp.sidenav = sidenav;
   });
 
   describe('goToAbout', () => {
@@ -39,6 +47,12 @@ describe('SideNavComponent', () => {
       spyOn(routesService, 'goToAbout');
       comp.goToAbout();
       expect(routesService.goToAbout).toHaveBeenCalled();
+    });
+
+    it('Should call sidenav.close', () => {
+      spyOn(sidenav, 'close');
+      comp.goToAbout();
+      expect(sidenav.close).toHaveBeenCalled();
     });
   });
 
@@ -48,6 +62,12 @@ describe('SideNavComponent', () => {
       comp.goToPortfolio();
       expect(routesService.goToPortfolio).toHaveBeenCalled();
     });
+
+    it('Should call sidenav.close', () => {
+      spyOn(sidenav, 'close');
+      comp.goToPortfolio();
+      expect(sidenav.close).toHaveBeenCalled();
+    });
   });
 
   describe('goToBlog', () => {
@@ -55,6 +75,12 @@ describe('SideNavComponent', () => {
       spyOn(routesService, 'goToBlog');
       comp.goToBlog();
       expect(routesService.goToBlog).toHaveBeenCalled();
+    });
+
+    it('Should call sidenav.close', () => {
+      spyOn(sidenav, 'close');
+      comp.goToBlog();
+      expect(sidenav.close).toHaveBeenCalled();
     });
   });
 });

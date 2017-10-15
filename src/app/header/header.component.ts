@@ -10,7 +10,7 @@ import { MatSidenav } from "@angular/material";
 
 export class HeaderComponent {
 
-  @Input() private sidenav: MatSidenav;
+  @Input() public sidenav: MatSidenav;
 
   public width: number;
 

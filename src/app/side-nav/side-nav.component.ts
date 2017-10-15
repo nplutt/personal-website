@@ -10,7 +10,7 @@ import { MatSidenav } from "@angular/material";
 
 export class SideNavComponent {
 
-  @Input() private sidenav: MatSidenav;
+  @Input() public sidenav: MatSidenav;
 
   constructor(
     private routesService: RoutesService
