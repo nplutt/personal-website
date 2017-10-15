@@ -13,8 +13,8 @@ export class SideNavComponent {
     private routesService: RoutesService
   ) { }
 
-  goToHome(): void {
-    this.routesService.goToHome();
+  goToAbout(): void {
+    this.routesService.goToAbout();
   }
 
   goToPortfolio(): void {

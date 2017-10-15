@@ -21,15 +21,15 @@ export class HeaderComponent {
     return this.width > 580;
   }
 
-  goToHome(): void {
-    this.routesService.goToHome();
-  }
-
   goToPortfolio(): void {
     this.routesService.goToPortfolio();
   }
 
   goToBlog(): void {
     this.routesService.goToBlog();
+  }
+
+  goToAbout(): void {
+    this.routesService.goToAbout();
   }
 }
