@@ -11,6 +11,7 @@ const appRoutes = [
   { path: 'about', component: AboutComponent },
   { path: 'portfolio', component: HeaderComponent },
   { path: 'blog', component: HeaderComponent },
+  // { path: 'hello', redirectTo: ''}
   { path: '**', component: PageNotFoundComponent }
 ];
 
