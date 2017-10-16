@@ -5,7 +5,7 @@ import { RoutesService } from '../services/routes/routes.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 export class RoutesServiceStub {
-  goToHome(): void { }
+  goToAbout(): void { }
   goToPortfolio(): void { }
   goToBlog(): void { }
 }
@@ -48,11 +48,11 @@ describe('HeaderComponent', () => {
     });
   });
 
-  describe('goToHome', () => {
-    it('Should call routesService.goToHome', () => {
-      spyOn(routesService, 'goToHome');
-      comp.goToHome();
-      expect(routesService.goToHome).toHaveBeenCalled();
+  describe('goToAbout', () => {
+    it('Should call routesService.goToAbout', () => {
+      spyOn(routesService, 'goToAbout');
+      comp.goToAbout();
+      expect(routesService.goToAbout).toHaveBeenCalled();
     });
   });
 

@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
+import { AboutComponent } from "./about/about.component"
 
 import { PageNotFoundComponent } from './page-not-found.component';
 
 const appRoutes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HeaderComponent },
+  { path: '', redirectTo: '/about', pathMatch: 'full' },
+  { path: 'about', component: AboutComponent },
   { path: 'portfolio', component: HeaderComponent },
   { path: 'blog', component: HeaderComponent },
   { path: '**', component: PageNotFoundComponent }

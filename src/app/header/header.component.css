@@ -11,7 +11,7 @@
   width: 100%;
   z-index: 10;
   box-sizing: border-box;
-  background-color: #0039cb;
+  background-color: white;
   padding: 8px 40px 8px 0;
   display: flex;
   flex-direction: row;
@@ -20,13 +20,13 @@
 #header-menu {
   min-width: 0;
   margin: 0 12px 0 12px;
-  color: white
+  color: #757575
 }
 
 .header-title {
   font-size: 32px;
   font-weight: 700;
-  color: white;
+  color: #003366;
   font-family: Roboto,"Helvetica Neue",sans-serif;
   display: flex;
   align-items: center;
@@ -38,7 +38,7 @@
 }
 
 .header-button {
-  color: white;
+  color: #757575;
   font-size: 14px;
   font-weight: 700;
   height: 100%;

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RoutesService } from '../services/routes/routes.service'
+import { MatSidenav } from "@angular/material";
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,8 @@ import { RoutesService } from '../services/routes/routes.service'
 })
 
 export class HeaderComponent {
+
+  @Input() public sidenav: MatSidenav;
 
   public width: number;
 
@@ -21,15 +24,15 @@ export class HeaderComponent {
     return this.width > 580;
   }
 
-  goToHome(): void {
-    this.routesService.goToHome();
-  }
-
   goToPortfolio(): void {
     this.routesService.goToPortfolio();
   }
 
   goToBlog(): void {
     this.routesService.goToBlog();
+  }
+
+  goToAbout(): void {
+    this.routesService.goToAbout();
   }
 }

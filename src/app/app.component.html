@@ -1,2 +1,8 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container id="page">
+  <mat-sidenav #sidenav>
+    <app-side-nav [sidenav]="sidenav"></app-side-nav>
+  </mat-sidenav>
+  <app-header [sidenav]="sidenav"></app-header>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
 

@@ -7,15 +7,15 @@ export class RoutesService {
     private router: Router
   ) { }
 
-  goToHome(): void {
-    this.router.navigate(['/home']);
-  }
-
   goToPortfolio(): void {
     this.router.navigate(['/portfolio']);
   }
 
   goToBlog(): void {
     this.router.navigate(['/blog']);
+  }
+
+  goToAbout(): void {
+    this.router.navigate(['/about'])
   }
 }

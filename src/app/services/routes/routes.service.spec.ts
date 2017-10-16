@@ -21,11 +21,11 @@ describe('RoutesService', () => {
     service = injector.get(RoutesService);
   });
 
-  describe('goToHome', () => {
-    it('Should call navigate with /home', () => {
+  describe('goToAbout', () => {
+    it('Should call navigate with /about', () => {
         spyOn(router, 'navigate');
-        service.goToHome();
-        expect(router.navigate).toHaveBeenCalledWith(['/home'])
+        service.goToAbout();
+        expect(router.navigate).toHaveBeenCalledWith(['/about'])
     });
   });
 
