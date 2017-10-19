@@ -14,7 +14,7 @@ npm link @angular/cli
 npm uninstall zone.js
 npm install zone.js@0.8.12
 npm run test:ci
-ng build --target=production --environment=prod --deploy-url=https://s3-us-west-2.amazonaws.com/$BUCKET/
+ng build --target=production --environment=prod --deploy-url=https://nickplutt.com
 
 # Deploy the UI to the web S3 bucket
 pip install awscli
