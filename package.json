@@ -6,9 +6,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
-    "test:ci": "ng test --browser=Headless_Chrome --code-coverage=true --single-run=true",
-    "test:xvfb": "xvfb-run npm run test:ci",
+    "test": "ng test --browser=Chrome",
+    "test:ci": "ng test --browser=ChromeHeadless --code-coverage=true --single-run=true",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -48,6 +47,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
+    "puppeteer": "^0.12.0",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.3.3"
