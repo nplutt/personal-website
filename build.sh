@@ -11,8 +11,6 @@ nodeenv -p
 # Build the UI
 npm install
 npm link @angular/cli
-npm uninstall zone.js
-npm install zone.js@0.8.12
 npm run test:ci
 ng build --target=production --environment=prod --deploy-url=https://nickplutt.com
 
