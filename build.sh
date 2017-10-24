@@ -9,9 +9,10 @@ pip install nodeenv
 nodeenv -p
 
 # Build the UI
+npm config set user 0
+npm config set unsafe-perm true
+npm install -g @angular/cli@1.4.7
 npm install
-npm link @angular/cli
-npm install @ngtools/webpack
 npm run test:ci
 ng build --target=production --environment=prod --deploy-url=https://nickplutt.com
 
