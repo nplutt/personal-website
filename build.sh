@@ -11,6 +11,7 @@ nodeenv -p
 # Build the UI
 npm install
 npm link @angular/cli
+npm install @ngtools/webpack
 npm run test:ci
 ng build --target=production --environment=prod --deploy-url=https://nickplutt.com
 
