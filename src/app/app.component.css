@@ -4,5 +4,5 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #F3F3F3
+  background: linear-gradient(to right, #3a7bd5, #3a6073);
 }
