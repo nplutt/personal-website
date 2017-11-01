@@ -1,26 +1,11 @@
-@media screen and (max-width: 760px) {
-  .card {
-    margin: 20px;
+@media screen and (max-width: 800px) {
+  .image {
+    width: calc(100% - 40px);
   }
 }
 
-@media screen and (min-width: 760px) {
-  .card {
+@media screen and (min-width: 800px) {
+  .image {
     width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
   }
-}
-
-.content {
-  font-size: 18px;
-}
-
-.title {
-  color: #003366;
-}
-
-#contact {
-  text-align: center;
 }
