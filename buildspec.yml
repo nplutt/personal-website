@@ -2,7 +2,7 @@ version: 0.2
 
 phases:
     install:
-        commands: 
+        commands:
             - virtualenv node
             - . node/bin/activate
             - pip install nodeenv
