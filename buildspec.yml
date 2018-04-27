@@ -9,9 +9,6 @@ phases:
             - nodeenv -p
     pre_build:
         commands:
-            - npm config set user 0
-            - npm config set unsafe-perm true
-            - npm install @angular/cli@1.6.5
             - npm install
     build:
         commands:
