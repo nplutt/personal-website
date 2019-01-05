@@ -4,10 +4,6 @@ import {withRouter} from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import MailIcon from '@material-ui/icons/Mail';
-import GithubIcon from '../icons/GitHubIcon';
-import LinkedInIcon from '../icons/LinkedInIcon';
-import IconButton from '@material-ui/core/IconButton';
 
 const styles = theme => ({
     home: {
@@ -23,44 +19,17 @@ const styles = theme => ({
     },
     about: {
         fontSize: '2vh'
-    },
-    contact: {
-        textAlign: 'center'
-    },
-    links: {
-        flexGrow: 1,
-        display: 'inline-flex',
-        paddingTop: '10px'
-    },
-    spacer: {
-        width: '20px'
     }
 });
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    sendMail = () => {
-        window.location.href = 'mailto:nplutt@gmail.com';
-    };
-
-    goToGithub = () => {
-        window.open('https://github.com/nplutt');
-    };
-
-    goToLinkedIn = () => {
-        window.open("https://linkedin.com/in/nickplutt", "_blank");
-    };
-
     render() {
         const {classes} = this.props;
 
         return (
             <div>
                 <div className={classes.home}>
-                    <Paper className={classes.paper} elevation={4}>
+                    <Paper className={classes.paper} elevation={5}>
                         <Typography variant="h4" color="primary">Welcome,</Typography>
                         <div className={classes.about}>
                             <p>
@@ -80,32 +49,14 @@ class Home extends Component {
                                 After spending two and a half years working at a large company with hundreds of
                                 engineers I decided to join ViewX, a small 5 person startup based out of New York City.
                                 At ViewX I worked as a senior full stack engineer where I did everything from CSS, HTML,
-                                & React on the front end, built out APIs in Flask on the backend, and managed all
-                                of our AWS infrastructure. Working in a fast paced startup environment was one of the most
+                                & React on the front end, built out APIs using Flask on the backend, and managed all
+                                of the AWS infrastructure. Working in a fast paced startup environment was one of the most
                                 enjoyable and exciting jobs I've had to date.
                             </p>
                             <p>
-                                Outside of work you can usually find me either working on one of the projects in my portfolio,
-                                riding my bike around Minneapolis, or attempting to cook.
+                                Outside of work you can usually find me either working on a project, reading,
+                                biking around Minneapolis, crying about the Vikings, or attempting to cook.
                             </p>
-                        </div>
-                    </Paper>
-                </div>
-                <div className={classes.home}>
-                    <Paper className={`${classes.paper} ${classes.contact}`} elevation={4}>
-                        <Typography variant="h4" color="primary">Contact Me</Typography>
-                        <div className={classes.links}>
-                            <IconButton onClick={this.sendMail} color="inherit">
-                                <MailIcon/>
-                            </IconButton>
-                            <div className={classes.spacer}/>
-                            <IconButton onClick={this.goToGithub} color="inherit">
-                                <GithubIcon/>
-                            </IconButton>
-                            <div className={classes.spacer}/>
-                            <IconButton onClick={this.goToLinkedIn} color="inherit">
-                                <LinkedInIcon/>
-                            </IconButton>
                         </div>
                     </Paper>
                 </div>

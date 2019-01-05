@@ -4,3 +4,13 @@ body {
   background: #FAFAFA;
   height: 100vh;
 }
+
+#root, .app-body {
+  height: 100%;
+  width: 100%;
+  display: inline-table;
+}
+
+.component {
+  overflow-y: auto;
+}

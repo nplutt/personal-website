@@ -6,6 +6,7 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import MaterialConfig from './config/material';
 import './index.css';
 import App from './App';
+import Home from './components/home/Home';
 import registerServiceWorker from './registerServiceWorker';
 
 const theme = createMuiTheme(MaterialConfig);
@@ -13,7 +14,7 @@ const theme = createMuiTheme(MaterialConfig);
 const router = (
     <BrowserRouter>
         <Switch>
-            <Route exact path="/" component={App}/>
+            <Route exact path="/" render={(props) => <App {...props} component={<Home/>}/>}/>
         </Switch>
     </BrowserRouter>
 );
