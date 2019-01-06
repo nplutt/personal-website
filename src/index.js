@@ -8,6 +8,7 @@ import './index.css';
 import App from './App';
 import Home from './components/home/Home';
 import Portfolio from './components/portfolio/Portfolio';
+import Blog from './components/blog/Blog';
 import registerServiceWorker from './registerServiceWorker';
 
 const theme = createMuiTheme(MaterialConfig);
@@ -17,6 +18,7 @@ const router = (
         <Switch>
             <Route exact path="/" render={(props) => <App {...props} component={<Home/>}/>}/>
             <Route exact path="/portfolio" render={(props => <App {...props} component={<Portfolio/>}/>)}/>
+            <Route exact path="/blog" render={(props => <App {...props} component={<Blog/>}/>)}/>
         </Switch>
     </BrowserRouter>
 );
