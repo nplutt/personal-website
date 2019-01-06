@@ -38,7 +38,7 @@ class Footer extends Component {
     };
 
     goToLinkedIn = () => {
-        window.open("https://linkedin.com/in/nickplutt", "_blank");
+        window.open("https://linkedin.com/in/nickplutt");
     };
 
     render() {
