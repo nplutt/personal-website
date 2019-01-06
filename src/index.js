@@ -19,6 +19,7 @@ const router = (
             <Route exact path="/" render={(props) => <App {...props} component={<Home/>}/>}/>
             <Route exact path="/portfolio" render={(props => <App {...props} component={<Portfolio/>}/>)}/>
             <Route exact path="/blog" render={(props => <App {...props} component={<Blog/>}/>)}/>
+            <Route path="/blog/:id" render={(props => <App {...props} component={<Blog/>}/>)}/>
         </Switch>
     </BrowserRouter>
 );

@@ -5,6 +5,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import posts from '../../blog/posts';
+import utils from '../../utils/common';
 
 const styles = theme => ({
     root: {
@@ -26,16 +27,12 @@ const styles = theme => ({
 });
 
 class Blog extends Component {
-    formatLink = (title) => {
-        return title.replace(/\s+/g, '-').toLowerCase();
-    };
-
     render() {
         const {classes} = this.props;
         const blogPosts = posts.map((post) => {
             return (
                 <Paper className={classes.paper} elevation={5} key={post.title}
-                       onClick={() => {this.props.history.push(`${this.formatLink(post.title)}`);}}>
+                       onClick={() => {this.props.history.push(`${utils.formatLink(post.title)}`);}}>
                     <Typography variant="h5" color="primary">{post.title}</Typography>
                     <Typography className={classes.date} variant="caption">{post.date}</Typography>
                     <Typography variant="body1">{post.summary}</Typography>
