@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "3.2.0",
     "@material-ui/icons": "3.0.1",
+    "marked": "^0.6.0",
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-router-dom": "4.3.1",
@@ -18,7 +19,7 @@
     "build:prod": "npm run build && npm run build:sitemap",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "npm run build:prod"
+    "deploy": "npm run build:prod && aws s3 sync build/ s3://nickplutt-website --profile personal && aws cloudfront create-invalidation --distribution-id E10BFEEZ8K2KO8 --paths '/*'"
   },
   "devDependencies": {
     "showdown": "1.9.0",

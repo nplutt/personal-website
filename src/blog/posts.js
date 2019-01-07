@@ -1,3 +1,5 @@
+import '../utils/common';
+
 export default [
     {
         title: 'Post 1',
