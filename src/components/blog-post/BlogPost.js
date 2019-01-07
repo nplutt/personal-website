@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
-import marked from 'marked';
+import showdown from 'showdown';
+import './gihub-markdown.css';
+import Highlight from 'react-highlight'
 
 const styles = {
     root: {
-        padding: '5vh 4vw 0 4vw',
+        padding: '5vh 4vw 3vh 4vw',
         maxWidth: '800px',
         margin: 'auto'
     }
@@ -25,18 +27,21 @@ class BlogPost extends Component {
 
         const readme = await fetch(`/blog-posts/${blogPost}.md`);
         const text = await readme.text();
-        console.log(text);
-        this.setState({
-            markdown: marked(text)
-        });
+        const converter = new showdown.Converter();
+        let html = converter.makeHtml(text);
 
+        this.setState({
+            markdown: html
+        });
     }
 
     render() {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <article dangerouslySetInnerHTML={{__html: this.state.markdown}}/>
+                <Highlight innerHTML={true}>
+                    {this.state.markdown}
+                </Highlight>
             </div>
         );
     }

@@ -5,12 +5,13 @@
   "dependencies": {
     "@material-ui/core": "3.2.0",
     "@material-ui/icons": "3.0.1",
-    "marked": "^0.6.0",
     "react": "16.4.1",
     "react-dom": "16.4.1",
+    "react-highlight": "0.12.0",
     "react-router-dom": "4.3.1",
     "react-scripts": "2.1.2",
-    "react-snap": "1.10.1"
+    "react-snap": "1.10.1",
+    "showdown": "1.9.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,7 +23,6 @@
     "deploy": "npm run build:prod && aws s3 sync build/ s3://nickplutt-website --profile personal && aws cloudfront create-invalidation --distribution-id E10BFEEZ8K2KO8 --paths '/*'"
   },
   "devDependencies": {
-    "showdown": "1.9.0",
     "sitemap": "2.0.1",
     "xml-formatter": "1.0.1"
   },
