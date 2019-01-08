@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
+import { Animate } from "react-show";
 import Paper from '@material-ui/core/Paper';
 import Highlight from 'react-highlight';
 import showdown from 'showdown';
@@ -26,6 +27,7 @@ class BlogPost extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loaded: false,
             markdown: null
         }
     }
@@ -37,22 +39,29 @@ class BlogPost extends Component {
         const text = await readme.text();
         const converter = new showdown.Converter({headerLevelStart: 4});
         let html = converter.makeHtml(text);
-        console.log(html);
 
         this.setState({
+            loaded: true,
             markdown: html
         });
     }
 
     render() {
         const {classes} = this.props;
+        console.log(this.state.loaded);
         return (
             <div className={`${classes.root} blog-post`}>
-                <Paper className={classes.paper} elevation={5}>
-                    <Highlight innerHTML={true}>
-                        {this.state.markdown}
-                    </Highlight>
-                </Paper>
+                <Animate show={this.state.loaded} duration={500} style={{height: 'auto', overflow: 'hidden'}}
+                         transitionOnMount
+                         stayMounted
+                         start={{height: 0}}>
+                    <Paper className={classes.paper} elevation={5}>
+                        {/*<h1>Hello World</h1>*/}
+                        <Highlight innerHTML={true}>
+                            {this.state.markdown}
+                        </Highlight>
+                    </Paper>
+                </Animate>
             </div>
         );
     }
