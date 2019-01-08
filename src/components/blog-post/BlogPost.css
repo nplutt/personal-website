@@ -1,13 +1,3 @@
-.fade-enter {
-    max-height: 0;
-    overflow: hidden;
-}
-
-.fade-enter-active {
-    max-height: 100%;
-    transition: max-height 1000ms ease-in;
-}
-
 .blog-post pre {
     overflow-y: auto;
     display: grid;
