@@ -32,10 +32,10 @@ class Blog extends Component {
         const blogPosts = posts.map((post) => {
             return (
                 <Paper className={classes.paper} elevation={5} key={post.title}
-                       onClick={() => {this.props.history.push(`${utils.formatLink(post.title)}`);}}>
+                       onClick={() => {this.props.history.push(`/blog/${post.folderName}`);}}>
                     <Typography variant="h5" color="primary">{post.title}</Typography>
                     <Typography className={classes.date} variant="caption">{post.date}</Typography>
-                    <Typography variant="body1">{post.summary}</Typography>
+                    <Typography variant="body1">{post.summary}...</Typography>
                 </Paper>
             )
         });

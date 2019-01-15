@@ -34,10 +34,15 @@ class BlogPost extends Component {
 
     async componentDidMount() {
         const blogPost = this.props.location.pathname.split('/').pop();
+        const readme = await fetch(`/blog-posts/${blogPost}/post.md`);
 
-        const readme = await fetch(`/blog-posts/${blogPost}.md`);
-        const text = await readme.text();
-        const converter = new showdown.Converter({headerLevelStart: 4});
+        let text = await readme.text();
+        text = text.replace(/.\/pictures/g, `/blog-posts/${blogPost}/pictures`);
+
+        const converter = new showdown.Converter({
+            headerLevelStart: 4,
+            parseImgDimensions: true
+        });
         let html = converter.makeHtml(text);
 
         this.setState({
@@ -51,7 +56,7 @@ class BlogPost extends Component {
         console.log(this.state.loaded);
         return (
             <div className={`${classes.root} blog-post`}>
-                <Animate show={this.state.loaded} duration={500} style={{height: 'auto', overflow: 'hidden'}}
+                <Animate show={this.state.loaded} duration={3000} style={{height: 'auto', overflow: 'hidden'}}
                          transitionOnMount
                          stayMounted
                          start={{height: 0}}>
