@@ -9,6 +9,10 @@
 # dependencies
 /node_modules
 
+# Generated files
+.docusaurus
+.cache-loader
+
 # IDEs and editors
 /.idea
 .project

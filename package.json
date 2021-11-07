@@ -1,38 +1,40 @@
 {
-  "name": "personal-website-react",
-  "version": "2.0.0",
+  "name": "website",
+  "version": "0.0.0",
   "private": true,
-  "dependencies": {
-    "@material-ui/core": "3.2.0",
-    "@material-ui/icons": "3.0.1",
-    "history": "^4.7.2",
-    "react": "16.4.1",
-    "react-dom": "16.4.1",
-    "react-ga": "^2.5.6",
-    "react-highlight": "0.12.0",
-    "react-router-dom": "4.3.1",
-    "react-scripts": "2.1.2",
-    "react-show": "3.0.4",
-    "react-snap": "1.10.1",
-    "showdown": "1.9.0"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:sitemap": "node scripts/sitemap.js",
-    "build:prod": "npm run build && npm run build:sitemap",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "deploy": "npm run build:prod && aws s3 sync build/ s3://nickplutt-website --profile personal && aws cloudfront create-invalidation --distribution-id E10BFEEZ8K2KO8 --paths '/*'"
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids"
   },
-  "devDependencies": {
-    "sitemap": "2.0.1",
-    "xml-formatter": "1.0.1"
+  "dependencies": {
+    "@docusaurus/core": "2.0.0-beta.9",
+    "@docusaurus/preset-classic": "2.0.0-beta.9",
+    "@mdx-js/react": "^1.6.21",
+    "@svgr/webpack": "^5.5.0",
+    "clsx": "^1.1.1",
+    "file-loader": "^6.2.0",
+    "prism-react-renderer": "^1.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "url-loader": "^4.1.1"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
